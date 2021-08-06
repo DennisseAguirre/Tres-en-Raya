@@ -5,6 +5,8 @@
  */
 package grupo_6;
 
+import Tablero.Tablero;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,9 +35,17 @@ public class Grupo_6 extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+//        Tablero tabl1= new Tablero();
+//        ArrayList ar1= new ArrayList();
+//        ar1.add(1);ar1.add(2);ar1.add(3);ar1.add(4);ar1.add(5);ar1.add(6);ar1.add(7);ar1.add(8);ar1.add(9);
+        
         launch(args);
+        
+//        System.out.println(tabl1.getTabla().toString());
+//        
+//        tabl1.setTabla(ar1);
+//        System.out.println(tabl1.getTabla().toString());
+//        System.out.println(tabl1.ganadorTabla());
     }
-    
-    //Prueba 2
     
 }
