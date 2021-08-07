@@ -7,10 +7,6 @@ package Tablero;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Juan Pisco
- */
 public class Tablero {
 
     ArrayList<Integer> tabla = new ArrayList<>();
