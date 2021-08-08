@@ -10,6 +10,22 @@ import java.util.ArrayList;
 public class Tree {
     TreeNode root;
 
+    public Tree(){
+        ArrayList l1 = new ArrayList();
+        l1.add(0);
+        l1.add(0);
+        l1.add(0);
+        l1.add(0);
+        l1.add(0);
+        l1.add(0);
+        l1.add(0);
+        l1.add(0);
+        l1.add(0);
+        TreeNode tn=new TreeNode(l1);
+        this.root= tn;
+        
+    }
+    
     public Tree(TreeNode root) {
         this.root = root;
     }
