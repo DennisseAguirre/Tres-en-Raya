@@ -10,10 +10,6 @@ import TDAs.TreeNode;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- *
- * @author Juan Pisco
- */
 public class IA {
 
     //Mini Max
