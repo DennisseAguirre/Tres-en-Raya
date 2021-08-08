@@ -12,10 +12,14 @@ import static Tablero.IA.listaUtilidadesMinimas;
 import Tablero.Tablero;
 import java.util.ArrayList;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -25,14 +29,62 @@ import javafx.stage.Stage;
  * @author demera
  */
 public class Grupo_6 extends Application {
+    Button b1=new Button("JUGAR");
+    Button b2=new Button("EMPEZAR");
+    Label l2=new Label("Modo");
+    Label l3=new Label("Tres en Raya");
+    VBox panel1 = new VBox();
+    VBox panel2 = new VBox();
+    VBox panel3 = new VBox();
+    ComboBox combo1=new ComboBox();
+    ObservableList list2 = panel2.getChildren();
     
     @Override
     public void start(Stage primaryStage) {
-        VBox panel1 = new VBox();
+        panel1.setAlignment(Pos.CENTER);
+        Label bienvenido=new Label("BIENVENIDO");
+        b1.setAlignment(Pos.CENTER);
+        ObservableList list = panel1.getChildren();
+        panel1.setSpacing(10);
+        list.addAll(bienvenido,b1);
         Scene scene = new Scene(panel1, 1100, 700);
         primaryStage.setTitle("Tres en Raya");
         primaryStage.setScene(scene);
         primaryStage.show();
+        ventanaModo(primaryStage,b1);
+    }
+    
+    public void ventanaModo(Stage s,Button b){
+        b.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                s.close();
+                panel2.setSpacing(10);
+                panel2.setAlignment(Pos.CENTER);
+                list2.addAll(l2,b2);
+                Scene scene2 = new Scene(panel2, 1100, 700);
+                Stage s2=new Stage();
+                s2.setScene(scene2);
+                s2.show();
+                ventanaUsuario(s2,b2);
+            }
+        });
+    }
+    
+    public void ventanaUsuario(Stage s,Button b){
+        b2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                s.close();
+                ObservableList list3 = panel3.getChildren();
+                list3.addAll(l3);
+                Scene scene3 = new Scene(panel3, 1100, 700);
+                Stage s3=new Stage();
+                s3.setScene(scene3);
+                s3.show();
+            }
+        });
+    
     }
 
     /**
