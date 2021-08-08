@@ -8,6 +8,7 @@ package grupo_6;
 import TDAs.Tree;
 import TDAs.TreeNode;
 import static Tablero.IA.generarTreeGeneral;
+import static Tablero.IA.listaUtilidadesMinimas;
 import Tablero.Tablero;
 import java.util.ArrayList;
 import javafx.application.Application;
@@ -49,18 +50,20 @@ public class Grupo_6 extends Application {
         
         Tree tre1= generarTreeGeneral(l1,  1);
         
-        System.out.println("PADRE");
-        System.out.println(tre1.getRoot().getContent());
-        
-        for(int i=0; i<tre1.getHijosLista().size(); i++){
-            System.out.println("HIJO"+(i+1));
-            System.out.println(tre1.getHijosLista().get(i).getContent());
-            
-            for(int e=0; e<tre1.getHijosLista().get(e).getHijos().size(); e++){
-                System.out.println("NIETO " +(e+1));
-                System.out.println(tre1.getHijosLista().get(i).getHijos().get(e).getContent());
-            }
-        }
+//        System.out.println("PADRE");
+//        System.out.println(tre1.getRoot().getContent());
+//        
+//        for(int i=0; i<tre1.getHijosLista().size(); i++){
+//            System.out.println("HIJO"+(i+1));
+//            System.out.println(tre1.getHijosLista().get(i).getContent());
+//            
+//            for(int e=0; e<tre1.getHijosLista().get(i).getHijos().size(); e++){
+//                System.out.println("NIETO " +(e+1));
+//                System.out.println(tre1.getHijosLista().get(i).getHijos().get(e).getContent());
+//            }
+//        }
+        ArrayList ar=listaUtilidadesMinimas(tre1, 1);
+        System.out.println(ar.toString());
     }
     
     
