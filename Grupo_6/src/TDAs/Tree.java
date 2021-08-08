@@ -5,8 +5,10 @@
  */
 package TDAs;
 
-public class Tree<T> {
-    TreeNode<T> root;
+import java.util.ArrayList;
+
+public class Tree {
+    TreeNode root;
 
     public Tree(TreeNode root) {
         this.root = root;
@@ -20,9 +22,31 @@ public class Tree<T> {
         this.root = root;
     }
     
+    public ArrayList<TreeNode> getHijosLista() {
+        return root.getHijos();
+    }
+    
     public boolean isEmpty() {
         return this.root == null;
     }
+    
+    public boolean isLeaf(){
+        if(this.root.hijos==null||this.root.hijos.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+    
+    public void iniHijos() {
+        if (this.root.hijos == null)
+            this.root.hijos = new ArrayList<TreeNode>();
+    }
+    
+    public void adddNodoHijo(TreeNode treeNode) {
+        iniHijos();
+        this.root.hijos.add(treeNode);
+    }
+    
     //Largest Value
     //find
     //lvl

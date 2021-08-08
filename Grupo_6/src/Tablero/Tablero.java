@@ -31,7 +31,7 @@ public class Tablero {
         return tabla;
     }
 
-    public void setTabla(ArrayList<Integer> tabla) {
+    public void setTabla(ArrayList<Integer> tabla) { //Revisar
         this.tabla = tabla;
     }
 

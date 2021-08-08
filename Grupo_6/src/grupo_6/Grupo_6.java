@@ -5,6 +5,9 @@
  */
 package grupo_6;
 
+import TDAs.Tree;
+import TDAs.TreeNode;
+import static Tablero.IA.generarTreeGeneral;
 import Tablero.Tablero;
 import java.util.ArrayList;
 import javafx.application.Application;
@@ -40,12 +43,27 @@ public class Grupo_6 extends Application {
 //        ar1.add(1);ar1.add(2);ar1.add(3);ar1.add(4);ar1.add(5);ar1.add(6);ar1.add(7);ar1.add(8);ar1.add(9);
         
         launch(args);
+
+        ArrayList l1=new ArrayList();
+        l1.add(1);l1.add(2);l1.add(1);l1.add(0);l1.add(1);l1.add(2);l1.add(0);l1.add(1);l1.add(0);
         
-//        System.out.println(tabl1.getTabla().toString());
-//        
-//        tabl1.setTabla(ar1);
-//        System.out.println(tabl1.getTabla().toString());
-//        System.out.println(tabl1.ganadorTabla());
+        Tree tre1= generarTreeGeneral(l1,  1);
+        
+        System.out.println("PADRE");
+        System.out.println(tre1.getRoot().getContent());
+        
+        for(int i=0; i<tre1.getHijosLista().size(); i++){
+            System.out.println("HIJO"+(i+1));
+            System.out.println(tre1.getHijosLista().get(i).getContent());
+            
+            for(int e=0; e<tre1.getHijosLista().get(e).getHijos().size(); e++){
+                System.out.println("NIETO " +(e+1));
+                System.out.println(tre1.getHijosLista().get(i).getHijos().get(e).getContent());
+            }
+        }
     }
+    
+    
+    
     
 }
