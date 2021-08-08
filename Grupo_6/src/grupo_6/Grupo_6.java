@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -37,8 +38,16 @@ public class Grupo_6 extends Application {
     ComboBox combo2=new ComboBox();
     VBox panelxo = new VBox();
     VBox panel12 = new VBox();
+    VBox paneljuego = new VBox();
+    HBox fila1=new HBox();
+    HBox fila2=new HBox();
+    HBox fila3=new HBox();
     ObservableList list2 = panel2.getChildren();
-    
+    ObservableList list3 = panel3.getChildren();
+    ObservableList list4 = fila1.getChildren();
+    ObservableList list5 = fila2.getChildren();
+    ObservableList list6 = fila3.getChildren();
+    ObservableList list7 = paneljuego.getChildren();
     @Override
     public void start(Stage primaryStage) {
         panel1.setStyle("-fx-background-color: BEIGE;");
@@ -99,8 +108,8 @@ public class Grupo_6 extends Application {
                 else{
                      s.close();
                      panel3.setStyle("-fx-background-color: BEIGE;");
-                     ObservableList list3 = panel3.getChildren();
-                     list3.addAll(l3);
+                     
+                     panelJuego();
                      Scene scene3 = new Scene(panel3, 1100, 700);
                      Stage s3=new Stage();
                      s3.setScene(scene3);
@@ -120,6 +129,33 @@ public class Grupo_6 extends Application {
      public void llenarCombo2(){
         combo2.getItems().add(("1 jugador"));
         combo2.getItems().add(("2 jugador"));
+        
+    }
+    public void panelJuego(){
+        Button bo1=new Button();
+        Button bo2=new Button();
+        Button bo3=new Button();
+        Button bo4=new Button();
+        Button bo5=new Button();
+        Button bo6=new Button();
+        Button bo7=new Button();
+        Button bo8=new Button();
+        Button bo9=new Button();
+        panel3.setSpacing(50);
+        panel3.setAlignment(Pos.CENTER);
+        paneljuego.setAlignment(Pos.CENTER);
+        fila1.setAlignment(Pos.CENTER);
+        fila2.setAlignment(Pos.CENTER);
+        fila3.setAlignment(Pos.CENTER);
+        fila1.setSpacing(10);
+        fila2.setSpacing(10);
+        fila3.setSpacing(10);
+        list4.addAll(bo1,bo2,bo3);
+        list5.addAll(bo4,bo5,bo6);
+        list6.addAll(bo7,bo8,bo9);
+        list7.addAll(fila1,fila2,fila3);
+        paneljuego.setSpacing(20);
+        list3.addAll(l3,paneljuego);
         
     }
 
