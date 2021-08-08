@@ -27,18 +27,22 @@ import javafx.stage.Stage;
 public class Grupo_6 extends Application {
     Button b1=new Button("JUGAR");
     Button b2=new Button("EMPEZAR");
+    Button b3=new Button("OK");
     Label l2=new Label("Modo");
     Label l3=new Label("Tres en Raya");
     Label l4=new Label("Seleccione si va a ser X o O: ");
     Label l5=new Label("Seleccione si va a ser el 1 o 2 jugador: ");
+    Label l6=new Label("Seleccione modo: ");
     VBox panel1 = new VBox();
     VBox panel2 = new VBox();
     VBox panel3 = new VBox();
     ComboBox combo1=new ComboBox();
     ComboBox combo2=new ComboBox();
+    ComboBox combo3=new ComboBox();
     VBox panelxo = new VBox();
     VBox panel12 = new VBox();
     VBox paneljuego = new VBox();
+    VBox panelmodo=new VBox();
     HBox fila1=new HBox();
     HBox fila2=new HBox();
     HBox fila3=new HBox();
@@ -48,6 +52,7 @@ public class Grupo_6 extends Application {
     ObservableList list5 = fila2.getChildren();
     ObservableList list6 = fila3.getChildren();
     ObservableList list7 = paneljuego.getChildren();
+    ObservableList list8 = panelmodo.getChildren();
     @Override
     public void start(Stage primaryStage) {
         panel1.setStyle("-fx-background-color: BEIGE;");
@@ -65,34 +70,61 @@ public class Grupo_6 extends Application {
         primaryStage.setTitle("Tres en Raya");
         primaryStage.setScene(scene);
         primaryStage.show();
-        ventanaModo(primaryStage,b1);
+        ventanaSeleccion(primaryStage,b1);
     }
+    public void ventanaSeleccion(Stage s,Button b){
+         b.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                s.close();
+                llenarCombo3();
+                panelmodo.setSpacing(40);
+                panelmodo.setAlignment(Pos.CENTER);
+                list8.addAll(l6,combo3,b3);
+                panelmodo.setStyle("-fx-background-color: BEIGE;");
+                Scene scene4 = new Scene(panelmodo, 500, 500);
+                Stage s4=new Stage();
+                s4.setScene(scene4);
+                s4.show();
+                ventanaModo(s4,b3);
+            }
+        });
+        
+    
+    }
+    
     
     public void ventanaModo(Stage s,Button b){
         b.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                s.close();
-                llenarCombo1();
-                llenarCombo2();
-                panel2.setSpacing(10);
-                panel2.setAlignment(Pos.CENTER);
-                panelxo.getChildren().addAll(l4);
-                panelxo.getChildren().addAll(combo1);
-                panelxo.setSpacing(20);
-                panelxo.setAlignment(Pos.CENTER);
-                panel12.getChildren().addAll(l5);
-                panel12.getChildren().addAll(combo2);
-                panel12.setSpacing(20);
-                panel12.setAlignment(Pos.CENTER);
-                list2.addAll(panelxo,panel12,b2);
-                panel2.setStyle("-fx-background-color: BEIGE;");
-                panel2.setSpacing(40);
-                Scene scene2 = new Scene(panel2, 500, 500);
-                Stage s2=new Stage();
-                s2.setScene(scene2);
-                s2.show();
-                ventanaUsuario(s2,b2);
+                if(combo3.getValue()==null){
+                    Label aviso=new Label("Usuario tiene que seleccionar una opción, por favor: ");
+                    list8.addAll(aviso);  
+                }
+                else{
+                    s.close();
+                    llenarCombo1();
+                    llenarCombo2();
+                    panel2.setSpacing(10);
+                    panel2.setAlignment(Pos.CENTER);
+                    panelxo.getChildren().addAll(l4);
+                    panelxo.getChildren().addAll(combo1);
+                    panelxo.setSpacing(20);
+                    panelxo.setAlignment(Pos.CENTER);
+                    panel12.getChildren().addAll(l5);
+                    panel12.getChildren().addAll(combo2);
+                    panel12.setSpacing(20);
+                    panel12.setAlignment(Pos.CENTER);
+                    list2.addAll(panelxo,panel12,b2);
+                    panel2.setStyle("-fx-background-color: BEIGE;");
+                    panel2.setSpacing(40);
+                    Scene scene2 = new Scene(panel2, 500, 500);
+                    Stage s2=new Stage();
+                    s2.setScene(scene2);
+                    s2.show();
+                    ventanaUsuario(s2,b2);
+                }
             }
         });
     }
@@ -129,6 +161,13 @@ public class Grupo_6 extends Application {
      public void llenarCombo2(){
         combo2.getItems().add(("1 jugador"));
         combo2.getItems().add(("2 jugador"));
+        
+    }
+     
+    public void llenarCombo3(){
+        combo3.getItems().add(("Jugador vs Computadora"));
+        combo3.getItems().add(("Jugador vs Jugador"));
+        combo3.getItems().add(("Computadora vs Computadora"));
         
     }
     public void panelJuego(){
