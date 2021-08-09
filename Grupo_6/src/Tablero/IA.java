@@ -71,13 +71,13 @@ public class IA {
         }
 
         int utiCasa = 0;
-        for (int i = 0; i < lista1.size(); i++) {
+        
             utiCasa = +calcularUtilidadesPeroEstaVezSi(lista1, ficha1);
-        }
+        
         int utiVisita = 0;
-        for (int i = 0; i < lista1.size(); i++) {
+        
             utiVisita = +calcularUtilidadesPeroEstaVezSi(lista1, ficha2);
-        }
+        
         int utiTot = utiCasa - utiVisita;
         return utiTot;
     }

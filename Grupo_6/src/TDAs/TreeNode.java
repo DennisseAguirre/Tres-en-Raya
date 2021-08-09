@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TDAs;
 
 import java.util.ArrayList;
@@ -27,10 +22,15 @@ public class TreeNode {
         //padre = null;
     }
 
+    public TreeNode(ArrayList<Integer> content, ArrayList<TreeNode> hijos) {
+        this.content = content;
+        this.hijos = hijos;
+    }
 //
 //    public TreeNode getPadre() {
 //        return padre;
 //    }
+
     public ArrayList<TreeNode> getHijos() {
         return hijos;
     }
@@ -52,11 +52,6 @@ public class TreeNode {
 
     public void setContent(ArrayList<Integer> content) {
         this.content = content;
-    }
-
-    public TreeNode(ArrayList<Integer> content, ArrayList<TreeNode> hijos) {
-        this.content = content;
-        this.hijos = hijos;
     }
 
     //Metodos para el juego

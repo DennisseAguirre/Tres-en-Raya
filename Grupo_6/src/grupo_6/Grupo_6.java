@@ -295,7 +295,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
-                    System.out.println(treeTablero.getRoot().getContent());
+                    System.out.println(treeTablero.getRoot().getContent());//quitar
                     checkWin(treeTablero.getRoot().getContent());
                     if (fin == false) {
                         System.out.println("Turno Maquina");
