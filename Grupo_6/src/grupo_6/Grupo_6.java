@@ -57,11 +57,13 @@ public class Grupo_6 extends Application {
     ObservableList list7 = paneljuego.getChildren();
     ObservableList list8 = panelmodo.getChildren();
 
-    Tree treeTablero= new Tree();
-    
+    Tree treeTablero = new Tree();
+    ArrayList compara1 = new ArrayList();
+
     int ficha1 = 1;
     int ficha2 = 2;
     int turno = 7;
+    boolean fin = false;
 
     @Override
     public void start(Stage primaryStage) {
@@ -92,7 +94,7 @@ public class Grupo_6 extends Application {
                 panelmodo.setSpacing(40);
                 panelmodo.setAlignment(Pos.CENTER);
                 aviso.setVisible(false);
-                list8.addAll(l6, combo3, b3,aviso);
+                list8.addAll(l6, combo3, b3, aviso);
                 panelmodo.setStyle("-fx-background-color: BEIGE;");
                 Scene scene4 = new Scene(panelmodo, 500, 500);
                 Stage s4 = new Stage();
@@ -103,24 +105,24 @@ public class Grupo_6 extends Application {
         });
 
     }
+
     public void ventanaModo(Stage s, Button b) {
         b.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             @Override
             public void handle(ActionEvent event) {
                 if (combo3.getValue() == null) {
                     aviso.setVisible(true);
-                }
-                else if(combo3.getValue()=="Computadora vs Computadora"){
-                            s.close();
-                            panelJuego();
-                            panel3.setStyle("-fx-background-color: BEIGE;");
-                            Scene scene3 = new Scene(panel3, 1100, 700);
-                            Stage s3 = new Stage();
-                            s3.setScene(scene3);
-                            s3.show(); 
-                }
-                else if(combo3.getValue()=="Jugador vs Jugador"){
+                } else if (combo3.getValue() == "Computadora vs Computadora") {
+                    turno = 1;
+                    s.close();
+                    panelJuego();
+                    panel3.setStyle("-fx-background-color: BEIGE;");
+                    Scene scene3 = new Scene(panel3, 1100, 700);
+                    Stage s3 = new Stage();
+                    s3.setScene(scene3);
+                    s3.show();
+                } else if (combo3.getValue() == "Jugador vs Jugador") {
                     s.close();
                     llenarCombo1();
                     panel2.setSpacing(10);
@@ -130,7 +132,7 @@ public class Grupo_6 extends Application {
                     panelxo.setSpacing(20);
                     panelxo.setAlignment(Pos.CENTER);
                     aviso2.setVisible(false);
-                    list2.addAll(panelxo, b4,aviso2);
+                    list2.addAll(panelxo, b4, aviso2);
                     panel2.setStyle("-fx-background-color: BEIGE;");
                     panel2.setSpacing(40);
                     Scene scene2 = new Scene(panel2, 500, 500);
@@ -138,9 +140,8 @@ public class Grupo_6 extends Application {
                     s2.setScene(scene2);
                     s2.show();
                     ventanaUsuario2(s2, b4);
-                    
-                }
-                 else {
+
+                } else {
                     s.close();
                     llenarCombo1();
                     llenarCombo2();
@@ -155,7 +156,7 @@ public class Grupo_6 extends Application {
                     panel12.setSpacing(20);
                     panel12.setAlignment(Pos.CENTER);
                     aviso2.setVisible(false);
-                    list2.addAll(panelxo, panel12, b2,aviso2);
+                    list2.addAll(panelxo, panel12, b2, aviso2);
                     panel2.setStyle("-fx-background-color: BEIGE;");
                     panel2.setSpacing(40);
                     Scene scene2 = new Scene(panel2, 500, 500);
@@ -173,17 +174,17 @@ public class Grupo_6 extends Application {
             @Override
             public void handle(ActionEvent event) {
                 if (/*combo1.getValue() == null && combo2.getValue() == null ||*/combo1.getValue() == null || combo2.getValue() == null) {
-                     aviso2.setVisible(true);
-                    
+                    aviso2.setVisible(true);
+
                 } else {
                     if (combo1.getValue().equals("O")) {
                         ficha1 = 2;
                         ficha2 = 1;
                     }
-                    if(combo2.getValue().equals("jugador 1")){
-                        turno=1;
-                    }else if(combo2.getValue().equals("jugador 2")){
-                        turno=2;
+                    if (combo2.getValue().equals("jugador 1")) {
+                        turno = 1;
+                    } else if (combo2.getValue().equals("jugador 2")) {
+                        turno = 2;
                     }
                     s.close();
                     panel3.setStyle("-fx-background-color: BEIGE;");
@@ -197,13 +198,14 @@ public class Grupo_6 extends Application {
             }
         });
     }
+
     public void ventanaUsuario2(Stage s, Button b) {
         b4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if (combo1.getValue() == null) {
-                     aviso2.setVisible(true);
-                    
+                    aviso2.setVisible(true);
+
                 } else {
                     if (combo1.getValue().equals("O")) {
                         ficha1 = 2;
@@ -240,18 +242,17 @@ public class Grupo_6 extends Application {
         combo3.getItems().add(("Computadora vs Computadora"));
 
     }
-    
 
     public void panelJuego() {
-        Button bo1 = new Button();
-        Button bo2 = new Button();
-        Button bo3 = new Button();
-        Button bo4 = new Button();
-        Button bo5 = new Button();
-        Button bo6 = new Button();
-        Button bo7 = new Button();
-        Button bo8 = new Button();
-        Button bo9 = new Button();
+        Button bo1 = new Button(" ");
+        Button bo2 = new Button(" ");
+        Button bo3 = new Button(" ");
+        Button bo4 = new Button(" ");
+        Button bo5 = new Button(" ");
+        Button bo6 = new Button(" ");
+        Button bo7 = new Button(" ");
+        Button bo8 = new Button(" ");
+        Button bo9 = new Button(" ");
         panel3.setSpacing(50);
         panel3.setAlignment(Pos.CENTER);
         paneljuego.setAlignment(Pos.CENTER);
@@ -267,7 +268,395 @@ public class Grupo_6 extends Application {
         list7.addAll(fila1, fila2, fila3);
         paneljuego.setSpacing(20);
         list3.addAll(l3, paneljuego);
+        if (turno == 2) {
+            turnoMaquina();
+            System.out.println("Compara 1 " + compara1);
+            actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+            System.out.println(treeTablero.getRoot().getContent());
+        }
+        bo1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().getContent().get(0) == 0&& fin == false) {
+                    if (ficha1 == 1) {
+                        bo1.setText("X");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(0, 1);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    } else if (ficha1 == 2) {
+                        bo1.setText("O");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(0, 2);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    }
+                    System.out.println(treeTablero.getRoot().getContent());
+                    checkWin(treeTablero.getRoot().getContent());
+                    if (fin == false) {
+                        System.out.println("Turno Maquina");
+                        turnoMaquina();
+                        System.out.println("Compara 1 " + compara1);
+                        actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+                        System.out.println(treeTablero.getRoot().getContent());
+                    }
+                }
+            }
+        });
+        bo2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().getContent().get(1) == 0&& fin == false) {
+                    if (ficha1 == 1) {
+                        bo2.setText("X");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(1, 1);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    } else if (ficha1 == 2) {
+                        bo2.setText("O");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(1, 2);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    }
+                    System.out.println(treeTablero.getRoot().getContent());
+                    checkWin(treeTablero.getRoot().getContent());
+                    if (fin == false) {
+                        System.out.println("Turno Maquina");
+                        turnoMaquina();
+                        System.out.println("Compara 1 " + compara1);
+                        actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+                        System.out.println(treeTablero.getRoot().getContent());
+                    }
+                }
+            }
+        });
+        bo3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().getContent().get(2) == 0 && fin == false) {
+                    if (ficha1 == 1) {
+                        bo3.setText("X");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(2, 1);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    } else if (ficha1 == 2) {
+                        bo3.setText("O");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(2, 2);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    }
+                    System.out.println(treeTablero.getRoot().getContent());
+                    checkWin(treeTablero.getRoot().getContent());
+                    if (fin == false) {
+                        System.out.println("Turno Maquina");
+                        turnoMaquina();
+                        System.out.println("Compara 1 " + compara1);
+                        actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+                        System.out.println(treeTablero.getRoot().getContent());
+                    }
+                }
+            }
+        });
+        bo4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().getContent().get(3) == 0 && fin == false) {
+                    if (ficha1 == 1) {
+                        bo4.setText("X");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(3, 1);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    } else if (ficha1 == 2) {
+                        bo4.setText("O");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(3, 2);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    }
+                    System.out.println(treeTablero.getRoot().getContent());
+                    checkWin(treeTablero.getRoot().getContent());
+                    if (fin == false) {
+                        System.out.println("Turno Maquina");
+                        turnoMaquina();
+                        System.out.println("Compara 1 " + compara1);
+                        actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+                        System.out.println(treeTablero.getRoot().getContent());
+                    }
+                }
+            }
+        });
+        bo5.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().getContent().get(4) == 0 && fin == false) {
+                    if (ficha1 == 1) {
+                        bo5.setText("X");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(4, 1);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    } else if (ficha1 == 2) {
+                        bo5.setText("O");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(4, 2);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    }
+                    System.out.println(treeTablero.getRoot().getContent());
+                    checkWin(treeTablero.getRoot().getContent());
+                    if (fin == false) {
+                        System.out.println("Turno Maquina");
+                        turnoMaquina();
+                        System.out.println("Compara 1 " + compara1);
+                        actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+                        System.out.println(treeTablero.getRoot().getContent());
+                    }
+                }
+            }
+        });
+        bo6.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().getContent().get(5) == 0 && fin == false) {
+                    if (ficha1 == 1) {
+                        bo6.setText("X");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(5, 1);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    } else if (ficha1 == 2) {
+                        bo6.setText("O");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(5, 2);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    }
+                    System.out.println(treeTablero.getRoot().getContent());
+                    checkWin(treeTablero.getRoot().getContent());
+                    if (fin == false) {
+                        System.out.println("Turno Maquina");
+                        turnoMaquina();
+                        System.out.println("Compara 1 " + compara1);
+                        actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+                        System.out.println(treeTablero.getRoot().getContent());
+                    }
+                }
+            }
+        });
+        bo7.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().getContent().get(6) == 0 && fin == false) {
+                    if (ficha1 == 1) {
+                        bo7.setText("X");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(6, 1);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    } else if (ficha1 == 2) {
+                        bo7.setText("O");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(6, 2);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    }
+                    System.out.println(treeTablero.getRoot().getContent());
+                    checkWin(treeTablero.getRoot().getContent());
+                    if (fin == false) {
+                        System.out.println("Turno Maquina");
+                        turnoMaquina();
+                        System.out.println("Compara 1 " + compara1);
+                        actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+                        System.out.println(treeTablero.getRoot().getContent());
+                    }
+                }
+            }
+        });
+        bo8.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().getContent().get(7) == 0 && fin == false) {
+                    if (ficha1 == 1) {
+                        bo8.setText("X");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(7, 1);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    } else if (ficha1 == 2) {
+                        bo8.setText("O");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(7, 2);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    }
+                    System.out.println(treeTablero.getRoot().getContent());
+                    checkWin(treeTablero.getRoot().getContent());
+                    if (fin == false) {
+                        System.out.println("Turno Maquina");
+                        turnoMaquina();
+                        System.out.println("Compara 1 " + compara1);
+                        actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+                        System.out.println(treeTablero.getRoot().getContent());
+                    }
+                }
+            }
+        });
+        bo9.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().getContent().get(8) == 0 && fin == false) {
+                    if (ficha1 == 1) {
+                        bo9.setText("X");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(8, 1);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    } else if (ficha1 == 2) {
+                        bo9.setText("O");
+                        ArrayList ar = new ArrayList();
+                        ar.addAll(treeTablero.getRoot().getContent());
+                        ar.set(8, 2);
+                        TreeNode tn1 = new TreeNode(ar);
+                        treeTablero = new Tree(tn1);
+                    }
+                    System.out.println(treeTablero.getRoot().getContent());
+                    checkWin(treeTablero.getRoot().getContent());
+                    if (fin == false) {
+                        System.out.println("Turno Maquina");
+                        turnoMaquina();
+                        System.out.println("Compara 1 " + compara1);
+                        actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
+                        System.out.println(treeTablero.getRoot().getContent());
+                    }
+                }
+            }
+        });
+        
+    }
 
+    public void checkWin(ArrayList<Integer> ar) { //REVISAR
+        Tablero tabla = new Tablero(ar);
+        int win = tabla.ganadorTabla();
+        if (win == 1) {
+            if (ficha1 == 1) {
+                System.out.println("GANASTE");
+            } else {
+                System.out.println("PERDISTE");
+            }
+            fin=true;
+        } else if (win == 2) {
+            if (ficha1 == 2) {
+                System.out.println("GANASTE");
+            } else {
+                System.out.println("PERDISTE");
+            }
+            fin=true;
+        } else if (win == 0) {
+            System.out.println("EMPATE");
+            fin=true;
+        } else {
+            System.out.println("El juego sigue");
+        }
+    }
+
+    public void turnoMaquina() {
+        TreeNode tn1 = calificarUtilidadMaxima(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2), ficha2);
+        compara1.clear();
+        compara1.addAll(treeTablero.getRoot().getContent());
+        System.out.println("Compara1: " + compara1);
+        treeTablero = new Tree(tn1);
+        System.out.println("Tree tras Turno maquina" + treeTablero.getRoot().getContent());
+        checkWin(treeTablero.getRoot().getContent());
+
+    }
+
+    public void actualizacionForzada(Button bo1, Button bo2, Button bo3, Button bo4, Button bo5, Button bo6, Button bo7, Button bo8, Button bo9, ArrayList compara1) {
+        System.out.println(compara1);
+        if (compara1.get(0) != treeTablero.getRoot().getContent().get(0)) {
+            if (ficha1 == 1) {
+                bo1.setText("O");
+            } else if (ficha1 == 2) {
+                bo1.setText("X");
+            }
+        }
+        if (compara1.get(1) != treeTablero.getRoot().getContent().get(1)) {
+            if (ficha1 == 1) {
+                bo2.setText("O");
+            } else if (ficha1 == 2) {
+                bo2.setText("X");
+            }
+        }
+        if (compara1.get(2) != treeTablero.getRoot().getContent().get(2)) {
+            if (ficha1 == 1) {
+                bo3.setText("O");
+            } else if (ficha1 == 2) {
+                bo3.setText("X");
+            }
+        }
+        if (compara1.get(3) != treeTablero.getRoot().getContent().get(3)) {
+            if (ficha1 == 1) {
+                bo4.setText("O");
+            } else if (ficha1 == 2) {
+                bo4.setText("X");
+            }
+        }
+        if (compara1.get(4) != treeTablero.getRoot().getContent().get(4)) {
+            if (ficha1 == 1) {
+                bo5.setText("O");
+            } else if (ficha1 == 2) {
+                bo5.setText("X");
+            }
+        }
+        if (compara1.get(5) != treeTablero.getRoot().getContent().get(5)) {
+            if (ficha1 == 1) {
+                bo6.setText("O");
+            } else if (ficha1 == 2) {
+                bo6.setText("X");
+            }
+        }
+        if (compara1.get(6) != treeTablero.getRoot().getContent().get(6)) {
+            if (ficha1 == 1) {
+                bo7.setText("O");
+            } else if (ficha1 == 2) {
+                bo7.setText("X");
+            }
+        }
+        if (compara1.get(7) != treeTablero.getRoot().getContent().get(7)) {
+            if (ficha1 == 1) {
+                bo8.setText("O");
+            } else if (ficha1 == 2) {
+                bo8.setText("X");
+            }
+        }
+        if (compara1.get(8) != treeTablero.getRoot().getContent().get(8)) {
+            if (ficha1 == 1) {
+                bo9.setText("O");
+            } else if (ficha1 == 2) {
+                bo9.setText("X");
+            }
+        }
     }
 
     /**
@@ -306,11 +695,11 @@ public class Grupo_6 extends Application {
 //                System.out.println(tre1.getHijosLista().get(i).getHijos().get(e).getContent());
 //            }
 //        }
-        ArrayList ar = listaUtilidadesMinimas(tre1, 1);
+        /*ArrayList ar = listaUtilidadesMinimas(tre1, 1);
 
         System.out.println(ar.toString());
         TreeNode tn3 = calificarUtilidadMaxima(tre1, 1);
-        System.out.println(tn3.getContent().toString());
+        System.out.println(tn3.getContent().toString());*/
     }
 
 }

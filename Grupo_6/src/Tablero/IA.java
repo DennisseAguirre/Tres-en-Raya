@@ -19,6 +19,8 @@ public class IA {
         int ficha2 = 1;
         if (ficha1 == 1) {
             ficha2 = 2;
+        }else{
+            ficha2=1;
         }
         TreeNode nodo1 = new TreeNode(list1);
         nodo1.generarHijos(ficha1);
