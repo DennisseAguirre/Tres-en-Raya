@@ -16,12 +16,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Grupo_6 extends Application {
 
@@ -559,26 +561,39 @@ public class Grupo_6 extends Application {
     public void checkWin(ArrayList<Integer> ar) { //REVISAR
         Tablero tabla = new Tablero(ar);
         int win = tabla.ganadorTabla();
+        String mensaje="";
         if (win == 1) {
             if (ficha1 == 1) {
-                System.out.println("GANASTE");
+                mensaje="GANASTE";
+                
             } else {
-                System.out.println("PERDISTE");
+                mensaje="PERDISTE";
+                
             }
             fin=true;
         } else if (win == 2) {
             if (ficha1 == 2) {
-                System.out.println("GANASTE");
+                 mensaje="GANASTE";
             } else {
-                System.out.println("PERDISTE");
+                 mensaje="PERDISTE";
             }
             fin=true;
         } else if (win == 0) {
-            System.out.println("EMPATE");
+            mensaje="EMPATE";
             fin=true;
         } else {
-            System.out.println("El juego sigue");
+            mensaje="El juego sigue";
         }
+        if(mensaje!="El juego sigue"){
+            Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+                dialogo.setTitle("Resultado");
+                dialogo.setHeaderText("Resultado");
+                dialogo.setContentText(mensaje);
+                dialogo.initStyle(StageStyle.UTILITY);
+                dialogo.showAndWait();
+        
+        }
+         
     }
 
     public void turnoMaquina() {
