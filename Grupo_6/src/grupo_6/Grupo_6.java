@@ -28,11 +28,14 @@ public class Grupo_6 extends Application {
     Button b1 = new Button("JUGAR");
     Button b2 = new Button("EMPEZAR");
     Button b3 = new Button("OK");
+    Button b4 = new Button("COMENZAR");
     Label l2 = new Label("Modo");
     Label l3 = new Label("Tres en Raya");
     Label l4 = new Label("Seleccione si va a ser X o O: ");
     Label l5 = new Label("Seleccione si va a ser el 1 o 2 jugador: ");
     Label l6 = new Label("Seleccione modo: ");
+    Label aviso2 = new Label("Usuario seleccione los datos que se le pida, por favor: ");
+    Label aviso = new Label("Usuario tiene que seleccionar una opción, por favor: ");
     VBox panel1 = new VBox();
     VBox panel2 = new VBox();
     VBox panel3 = new VBox();
@@ -88,7 +91,8 @@ public class Grupo_6 extends Application {
                 llenarCombo3();
                 panelmodo.setSpacing(40);
                 panelmodo.setAlignment(Pos.CENTER);
-                list8.addAll(l6, combo3, b3);
+                aviso.setVisible(false);
+                list8.addAll(l6, combo3, b3,aviso);
                 panelmodo.setStyle("-fx-background-color: BEIGE;");
                 Scene scene4 = new Scene(panelmodo, 500, 500);
                 Stage s4 = new Stage();
@@ -99,15 +103,44 @@ public class Grupo_6 extends Application {
         });
 
     }
-
     public void ventanaModo(Stage s, Button b) {
         b.setOnAction(new EventHandler<ActionEvent>() {
+            
             @Override
             public void handle(ActionEvent event) {
                 if (combo3.getValue() == null) {
-                    Label aviso = new Label("Usuario tiene que seleccionar una opción, por favor: ");
-                    list8.addAll(aviso);
-                } else {
+                    aviso.setVisible(true);
+                }
+                else if(combo3.getValue()=="Computadora vs Computadora"){
+                            s.close();
+                            panelJuego();
+                            panel3.setStyle("-fx-background-color: BEIGE;");
+                            Scene scene3 = new Scene(panel3, 1100, 700);
+                            Stage s3 = new Stage();
+                            s3.setScene(scene3);
+                            s3.show(); 
+                }
+                else if(combo3.getValue()=="Jugador vs Jugador"){
+                    s.close();
+                    llenarCombo1();
+                    panel2.setSpacing(10);
+                    panel2.setAlignment(Pos.CENTER);
+                    panelxo.getChildren().addAll(l4);
+                    panelxo.getChildren().addAll(combo1);
+                    panelxo.setSpacing(20);
+                    panelxo.setAlignment(Pos.CENTER);
+                    aviso2.setVisible(false);
+                    list2.addAll(panelxo, b4,aviso2);
+                    panel2.setStyle("-fx-background-color: BEIGE;");
+                    panel2.setSpacing(40);
+                    Scene scene2 = new Scene(panel2, 500, 500);
+                    Stage s2 = new Stage();
+                    s2.setScene(scene2);
+                    s2.show();
+                    ventanaUsuario2(s2, b4);
+                    
+                }
+                 else {
                     s.close();
                     llenarCombo1();
                     llenarCombo2();
@@ -121,7 +154,8 @@ public class Grupo_6 extends Application {
                     panel12.getChildren().addAll(combo2);
                     panel12.setSpacing(20);
                     panel12.setAlignment(Pos.CENTER);
-                    list2.addAll(panelxo, panel12, b2);
+                    aviso2.setVisible(false);
+                    list2.addAll(panelxo, panel12, b2,aviso2);
                     panel2.setStyle("-fx-background-color: BEIGE;");
                     panel2.setSpacing(40);
                     Scene scene2 = new Scene(panel2, 500, 500);
@@ -139,8 +173,8 @@ public class Grupo_6 extends Application {
             @Override
             public void handle(ActionEvent event) {
                 if (/*combo1.getValue() == null && combo2.getValue() == null ||*/combo1.getValue() == null || combo2.getValue() == null) {
-                    Label aviso = new Label("Usuario seleccione los datos que se le pida, por favor: ");
-                    list2.addAll(aviso);
+                     aviso2.setVisible(true);
+                    
                 } else {
                     if (combo1.getValue().equals("O")) {
                         ficha1 = 2;
@@ -153,12 +187,35 @@ public class Grupo_6 extends Application {
                     }
                     s.close();
                     panel3.setStyle("-fx-background-color: BEIGE;");
-
                     panelJuego();
                     Scene scene3 = new Scene(panel3, 1100, 700);
                     Stage s3 = new Stage();
                     s3.setScene(scene3);
                     s3.show();
+                }
+
+            }
+        });
+    }
+    public void ventanaUsuario2(Stage s, Button b) {
+        b4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (combo1.getValue() == null) {
+                     aviso2.setVisible(true);
+                    
+                } else {
+                    if (combo1.getValue().equals("O")) {
+                        ficha1 = 2;
+                        ficha2 = 1;
+                    }
+                    s.close();
+                    panel3.setStyle("-fx-background-color: BEIGE;");
+                    panelJuego();
+                    Scene scene5 = new Scene(panel3, 1100, 700);
+                    Stage s5 = new Stage();
+                    s5.setScene(scene5);
+                    s5.show();
                 }
 
             }
@@ -183,6 +240,7 @@ public class Grupo_6 extends Application {
         combo3.getItems().add(("Computadora vs Computadora"));
 
     }
+    
 
     public void panelJuego() {
         Button bo1 = new Button();
