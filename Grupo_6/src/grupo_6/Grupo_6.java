@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package grupo_6;
-// yrqw
+
 import TDAs.Tree;
 import TDAs.TreeNode;
 import static Tablero.IA.*;
@@ -38,7 +38,7 @@ public class Grupo_6 extends Application {
     Label l5 = new Label("Seleccione si va a ser el 1 o 2 jugador: ");
     Label l6 = new Label("Seleccione modo: ");
     Label aviso2 = new Label("Usuario seleccione los datos que se le pida, por favor: ");
-    Label aviso = new Label("Usuario tiene que seleccionar una opción, por favor: ");
+    Label aviso = new Label("Usuario tiene que seleccionar una opciÃ³n, por favor: ");
     VBox panel1 = new VBox();
     VBox panel2 = new VBox();
     VBox panel3 = new VBox();
@@ -71,16 +71,16 @@ public class Grupo_6 extends Application {
     @Override
     public void start(Stage primaryStage) {
         panel1.setStyle("-fx-background-color: BEIGE;");
-         ArrayList<Integer>a=new ArrayList<>();
-                a.add(0);
-                a.add(1);
-                a.add(2);
-                a.add(1);
-                a.add(0);
-                a.add(0);
-                a.add(2);
-                a.add(1);
-                a.add(0);
+        ArrayList<Integer> a = new ArrayList<>();
+        a.add(0);
+        a.add(1);
+        a.add(2);
+        a.add(1);
+        a.add(0);
+        a.add(0);
+        a.add(2);
+        a.add(1);
+        a.add(0);
         ventanatablero(a);
         panel1.setAlignment(Pos.CENTER);
         Label bienvenido = new Label("BIENVENIDO");
@@ -281,7 +281,7 @@ public class Grupo_6 extends Application {
         list6.addAll(bo7, bo8, bo9);
         list7.addAll(fila1, fila2, fila3);
         paneljuego.setSpacing(20);
-        list3.addAll(l3,tablerocomp,paneljuego);
+        list3.addAll(l3, tablerocomp, paneljuego);
         if (turno == 2) {
             turnoMaquina();
             System.out.println("Compara 1 " + compara1);
@@ -291,7 +291,7 @@ public class Grupo_6 extends Application {
         bo1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (treeTablero.getRoot().getContent().get(0) == 0&& fin == false) {
+                if (treeTablero.getRoot().getContent().get(0) == 0 && fin == false) {
                     if (ficha1 == 1) {
                         bo1.setText("X");
                         ArrayList ar = new ArrayList();
@@ -309,7 +309,13 @@ public class Grupo_6 extends Application {
                     }
                     System.out.println(treeTablero.getRoot().getContent());//quitar
                     checkWin(treeTablero.getRoot().getContent());
-                    if (fin == false) {
+                    if (turno == 7) {
+                        if (ficha1 == 1) {
+                            ficha1 = 2;
+                        } else if (ficha1 == 2) {
+                            ficha1 = 1;
+                        }
+                    } else if (fin == false) {
                         System.out.println("Turno Maquina");
                         turnoMaquina();
                         System.out.println("Compara 1 " + compara1);
@@ -322,7 +328,7 @@ public class Grupo_6 extends Application {
         bo2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (treeTablero.getRoot().getContent().get(1) == 0&& fin == false) {
+                if (treeTablero.getRoot().getContent().get(1) == 0 && fin == false) {
                     if (ficha1 == 1) {
                         bo2.setText("X");
                         ArrayList ar = new ArrayList();
@@ -340,7 +346,13 @@ public class Grupo_6 extends Application {
                     }
                     System.out.println(treeTablero.getRoot().getContent());
                     checkWin(treeTablero.getRoot().getContent());
-                    if (fin == false) {
+                    if (turno == 7) {
+                        if (ficha1 == 1) {
+                            ficha1 = 2;
+                        } else if (ficha1 == 2) {
+                            ficha1 = 1;
+                        }
+                    } else if (fin == false) {
                         System.out.println("Turno Maquina");
                         turnoMaquina();
                         System.out.println("Compara 1 " + compara1);
@@ -371,7 +383,13 @@ public class Grupo_6 extends Application {
                     }
                     System.out.println(treeTablero.getRoot().getContent());
                     checkWin(treeTablero.getRoot().getContent());
-                    if (fin == false) {
+                    if (turno == 7) {
+                        if (ficha1 == 1) {
+                            ficha1 = 2;
+                        } else if (ficha1 == 2) {
+                            ficha1 = 1;
+                        }
+                    } else if (fin == false) {
                         System.out.println("Turno Maquina");
                         turnoMaquina();
                         System.out.println("Compara 1 " + compara1);
@@ -402,7 +420,13 @@ public class Grupo_6 extends Application {
                     }
                     System.out.println(treeTablero.getRoot().getContent());
                     checkWin(treeTablero.getRoot().getContent());
-                    if (fin == false) {
+                    if (turno == 7) {
+                        if (ficha1 == 1) {
+                            ficha1 = 2;
+                        } else if (ficha1 == 2) {
+                            ficha1 = 1;
+                        }
+                    } else if (fin == false) {
                         System.out.println("Turno Maquina");
                         turnoMaquina();
                         System.out.println("Compara 1 " + compara1);
@@ -433,7 +457,13 @@ public class Grupo_6 extends Application {
                     }
                     System.out.println(treeTablero.getRoot().getContent());
                     checkWin(treeTablero.getRoot().getContent());
-                    if (fin == false) {
+                    if (turno == 7) {
+                        if (ficha1 == 1) {
+                            ficha1 = 2;
+                        } else if (ficha1 == 2) {
+                            ficha1 = 1;
+                        }
+                    } else if (fin == false) {
                         System.out.println("Turno Maquina");
                         turnoMaquina();
                         System.out.println("Compara 1 " + compara1);
@@ -464,7 +494,13 @@ public class Grupo_6 extends Application {
                     }
                     System.out.println(treeTablero.getRoot().getContent());
                     checkWin(treeTablero.getRoot().getContent());
-                    if (fin == false) {
+                    if (turno == 7) {
+                        if (ficha1 == 1) {
+                            ficha1 = 2;
+                        } else if (ficha1 == 2) {
+                            ficha1 = 1;
+                        }
+                    } else if (fin == false) {
                         System.out.println("Turno Maquina");
                         turnoMaquina();
                         System.out.println("Compara 1 " + compara1);
@@ -495,7 +531,13 @@ public class Grupo_6 extends Application {
                     }
                     System.out.println(treeTablero.getRoot().getContent());
                     checkWin(treeTablero.getRoot().getContent());
-                    if (fin == false) {
+                    if (turno == 7) {
+                        if (ficha1 == 1) {
+                            ficha1 = 2;
+                        } else if (ficha1 == 2) {
+                            ficha1 = 1;
+                        }
+                    } else if (fin == false) {
                         System.out.println("Turno Maquina");
                         turnoMaquina();
                         System.out.println("Compara 1 " + compara1);
@@ -526,7 +568,13 @@ public class Grupo_6 extends Application {
                     }
                     System.out.println(treeTablero.getRoot().getContent());
                     checkWin(treeTablero.getRoot().getContent());
-                    if (fin == false) {
+                    if (turno == 7) {
+                        if (ficha1 == 1) {
+                            ficha1 = 2;
+                        } else if (ficha1 == 2) {
+                            ficha1 = 1;
+                        }
+                    } else if (fin == false) {
                         System.out.println("Turno Maquina");
                         turnoMaquina();
                         System.out.println("Compara 1 " + compara1);
@@ -557,7 +605,13 @@ public class Grupo_6 extends Application {
                     }
                     System.out.println(treeTablero.getRoot().getContent());
                     checkWin(treeTablero.getRoot().getContent());
-                    if (fin == false) {
+                    if (turno == 7) {
+                        if (ficha1 == 1) {
+                            ficha1 = 2;
+                        } else if (ficha1 == 2) {
+                            ficha1 = 1;
+                        }
+                    } else if (fin == false) {
                         System.out.println("Turno Maquina");
                         turnoMaquina();
                         System.out.println("Compara 1 " + compara1);
@@ -567,45 +621,81 @@ public class Grupo_6 extends Application {
                 }
             }
         });
-        
+
     }
 
     public void checkWin(ArrayList<Integer> ar) { //REVISAR
         Tablero tabla = new Tablero(ar);
         int win = tabla.ganadorTabla();
-        String mensaje="";
-        if (win == 1) {
-            if (ficha1 == 1) {
-                mensaje="GANASTE";
-                
+        String mensaje = "";
+
+        if (turno == 7) {
+            if (win == 1) {
+                if (ficha1 == 1) {
+                    mensaje = "GANARON LAS X";
+
+                } else {
+                    mensaje = "GANARON LAS O";
+
+                }
+                fin = true;
+            } else if (win == 2) {
+                if (ficha1 == 2) {
+                    mensaje = "GANARON LAS O";
+                } else {
+                    mensaje = "GANARON LAS X";
+                }
+                fin = true;
+            } else if (win == 0) {
+                mensaje = "EMPATE";
+                fin = true;
             } else {
-                mensaje="PERDISTE";
-                
+                mensaje = "El juego sigue";
             }
-            fin=true;
-        } else if (win == 2) {
-            if (ficha1 == 2) {
-                 mensaje="GANASTE";
-            } else {
-                 mensaje="PERDISTE";
-            }
-            fin=true;
-        } else if (win == 0) {
-            mensaje="EMPATE";
-            fin=true;
-        } else {
-            mensaje="El juego sigue";
-        }
-        if(mensaje!="El juego sigue"){
-            Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+            if (mensaje
+                    != "El juego sigue") {
+                Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
                 dialogo.setTitle("Resultado");
                 dialogo.setHeaderText("Resultado");
                 dialogo.setContentText(mensaje);
                 dialogo.initStyle(StageStyle.UTILITY);
                 dialogo.showAndWait();
-        
+
+            }
+        } else {
+            if (win == 1) {
+                if (ficha1 == 1) {
+                    mensaje = "GANASTE";
+
+                } else {
+                    mensaje = "PERDISTE";
+
+                }
+                fin = true;
+            } else if (win == 2) {
+                if (ficha1 == 2) {
+                    mensaje = "GANASTE";
+                } else {
+                    mensaje = "PERDISTE";
+                }
+                fin = true;
+            } else if (win == 0) {
+                mensaje = "EMPATE";
+                fin = true;
+            } else {
+                mensaje = "El juego sigue";
+            }
+            if (mensaje
+                    != "El juego sigue") {
+                Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+                dialogo.setTitle("Resultado");
+                dialogo.setHeaderText("Resultado");
+                dialogo.setContentText(mensaje);
+                dialogo.initStyle(StageStyle.UTILITY);
+                dialogo.showAndWait();
+
+            }
         }
-         
     }
 
     public void turnoMaquina() {
@@ -615,7 +705,6 @@ public class Grupo_6 extends Application {
         System.out.println("Compara1: " + compara1);
         treeTablero = new Tree(tn1);
         System.out.println("Tree tras Turno maquina" + treeTablero.getRoot().getContent());
-        checkWin(treeTablero.getRoot().getContent());
 
     }
 
@@ -684,19 +773,20 @@ public class Grupo_6 extends Application {
                 bo9.setText("X");
             }
         }
+        checkWin(treeTablero.getRoot().getContent());
     }
-    
-     public void ventanatablero(ArrayList<Integer> a) {
+
+    public void ventanatablero(ArrayList<Integer> a) {
         tablerocomp.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                VBox panela=new VBox();
+                VBox panela = new VBox();
                 panela.setSpacing(10);
                 ObservableList penal = panela.getChildren();
-                Label c=tablerolabel(a);
+                Label c = tablerolabel(a);
                 c.setStyle("-fx-background-color: aqua;");
                 penal.addAll(c);
-                Stage sta=new Stage();
+                Stage sta = new Stage();
                 panela.setStyle("-fx-background-color: BEIGE;");
                 Scene escena = new Scene(panela, 500, 500);
                 sta.setScene(escena);
@@ -704,54 +794,55 @@ public class Grupo_6 extends Application {
             }
         });
     }
-    public Label tablerolabel(ArrayList<Integer> a){
-        String cadena1="";
-        String cadena2="";
-        String cadena3="";
-        Label l=new Label("");
-        for(int i=0;i<a.size();i++){
-            if(i>=0 && i<=2){
-                if(a.get(i)==0){
-                   cadena1+=" |_| ";
+
+    public Label tablerolabel(ArrayList<Integer> a) {
+        String cadena1 = "";
+        String cadena2 = "";
+        String cadena3 = "";
+        Label l = new Label("");
+        for (int i = 0; i < a.size(); i++) {
+            if (i >= 0 && i <= 2) {
+                if (a.get(i) == 0) {
+                    cadena1 += " |_| ";
                 }
-            
-                if(a.get(i)==1){
-                   cadena1+=" |X| ";
+
+                if (a.get(i) == 1) {
+                    cadena1 += " |X| ";
                 }
-                if(a.get(i)==2){
-                   cadena1+=" |O| ";
+                if (a.get(i) == 2) {
+                    cadena1 += " |O| ";
                 }
-            } 
-            if(i>=3 && i<=5){
-                if(a.get(i)==0){
-                   cadena2+=" |_| ";
+            }
+            if (i >= 3 && i <= 5) {
+                if (a.get(i) == 0) {
+                    cadena2 += " |_| ";
                 }
-            
-                if(a.get(i)==1){
-                   cadena2+=" |X| ";
+
+                if (a.get(i) == 1) {
+                    cadena2 += " |X| ";
                 }
-                if(a.get(i)==2){
-                   cadena2+=" |O| ";
+                if (a.get(i) == 2) {
+                    cadena2 += " |O| ";
                 }
-            } 
-            if(i>=6){
-                if(a.get(i)==0){
-                   cadena3+=" |_| ";
+            }
+            if (i >= 6) {
+                if (a.get(i) == 0) {
+                    cadena3 += " |_| ";
                 }
-            
-                if(a.get(i)==1){
-                   cadena3+=" |X| ";
+
+                if (a.get(i) == 1) {
+                    cadena3 += " |X| ";
                 }
-                if(a.get(i)==2){
-                   cadena3+=" |O| ";
+                if (a.get(i) == 2) {
+                    cadena3 += " |O| ";
                 }
-            } 
-            
+            }
+
         }
-        l.setText(cadena1+"\n"+cadena2+"\n"+cadena3);
+        l.setText(cadena1 + "\n" + cadena2 + "\n" + cadena3);
         return l;
-    
-    } 
+
+    }
 
     /**
      * @param args the command line arguments
@@ -794,7 +885,6 @@ public class Grupo_6 extends Application {
         System.out.println(ar.toString());
         TreeNode tn3 = calificarUtilidadMaxima(tre1, 1);
         System.out.println(tn3.getContent().toString());*/
-        //dfsfdsasdasdasdas
     }
 
 }
