@@ -66,4 +66,14 @@ public class TreeNode {
             }
         }
     }
+
+    public int contarCeros() {
+        int numeroDeCeros = 0;
+        for (int inte : this.content) {
+            if (inte == 0) {
+                numeroDeCeros++;
+            }
+        }
+        return numeroDeCeros;
+    }
 }

@@ -59,6 +59,9 @@ public class Tree {
         this.root.hijos.add(treeNode);
     }
     
+    public ArrayList<Integer> getContent() {
+        return root.getContent();
+    }
     //Largest Value
     //find
     //lvl

@@ -13,18 +13,17 @@ import java.util.Collections;
 public class IA {
 
     //Mini Max
-    
-    
     public static Tree generarTreeGeneral(ArrayList<Integer> list1, int ficha1) {
         int ficha2 = 1;
         if (ficha1 == 1) {
             ficha2 = 2;
-        }else{
-            ficha2=1;
+        } else {
+            ficha2 = 1;
         }
         TreeNode nodo1 = new TreeNode(list1);
         nodo1.generarHijos(ficha1);
         for (int i = 0; i <= nodo1.getHijos().size() - 1; i++) {
+            System.out.println(i);
             nodo1.getHijos().get(i).generarHijos(ficha2);
         }
         Tree tre1 = new Tree(nodo1);
@@ -33,23 +32,23 @@ public class IA {
     }
 
     //UTILIDADES
-    public static TreeNode calificarUtilidadMaxima(Tree tre1, int ficha1){
-        ArrayList<Integer> listaUtilidad=listaUtilidadesMinimas(tre1, ficha1);
-        if(listaUtilidad.isEmpty()){
+    public static TreeNode calificarUtilidadMaxima(Tree tre1, int ficha1) {
+        ArrayList<Integer> listaUtilidad = listaUtilidadesMinimas(tre1, ficha1);
+        if (listaUtilidad.isEmpty()) {
             return null;
         }
-        
-        int index=0;
-        int a=listaUtilidad.get(0);
-        for (int i=0; i<listaUtilidad.size();i++){
-            if(a<listaUtilidad.get(i)){
-                a=listaUtilidad.get(i);
-                index=i;
+
+        int index = 0;
+        int a = listaUtilidad.get(0);
+        for (int i = 0; i < listaUtilidad.size(); i++) {
+            if (a < listaUtilidad.get(i)) {
+                a = listaUtilidad.get(i);
+                index = i;
             }
         }
         return (tre1.getHijosLista().get(index));
     }
-    
+
     public static ArrayList listaUtilidadesMinimas(Tree tre1, int ficha1) {
         ArrayList listaUti = new ArrayList();
         for (int i = 0; i < tre1.getHijosLista().size(); i++) {
@@ -58,8 +57,15 @@ public class IA {
                 int temp = calcularUtilidades(tre1.getHijosLista().get(i).getHijos().get(e).getContent(), ficha1);
                 UtiTemp.add(temp);
             }
-            Integer min = Collections.min(UtiTemp);
-            listaUti.add(min);
+            if (!UtiTemp.isEmpty()) {
+                Integer min = UtiTemp.get(0);
+                for (int e = 1; e < UtiTemp.size(); e++) {
+                    if (UtiTemp.get(e) < min) {
+                        min = UtiTemp.get(e);
+                    }
+                }
+                listaUti.add(min);
+            }
         }
         return listaUti;
     }
@@ -71,13 +77,13 @@ public class IA {
         }
 
         int utiCasa = 0;
-        
-            utiCasa = +calcularUtilidadesPeroEstaVezSi(lista1, ficha1);
-        
+
+        utiCasa = +calcularUtilidadesPeroEstaVezSi(lista1, ficha1);
+
         int utiVisita = 0;
-        
-            utiVisita = +calcularUtilidadesPeroEstaVezSi(lista1, ficha2);
-        
+
+        utiVisita = +calcularUtilidadesPeroEstaVezSi(lista1, ficha2);
+
         int utiTot = utiCasa - utiVisita;
         return utiTot;
     }
@@ -91,32 +97,32 @@ public class IA {
         int uti = 0;
 
         if (lista1.get(0) != ficha2 && lista1.get(1) != ficha2 && lista1.get(2) != ficha2) {
-            uti = uti+1;
+            uti = uti + 1;
         }
         if (lista1.get(3) != ficha2 && lista1.get(4) != ficha2 && lista1.get(5) != ficha2) {
-            uti = uti+1;
+            uti = uti + 1;
         }
         if (lista1.get(6) != ficha2 && lista1.get(7) != ficha2 && lista1.get(8) != ficha2) {
-            uti = uti+1;
+            uti = uti + 1;
         }
 
         if (lista1.get(0) != ficha2 && lista1.get(3) != ficha2 && lista1.get(6) != ficha2) {
-            uti = uti+1;
+            uti = uti + 1;
         }
         if (lista1.get(1) != ficha2 && lista1.get(4) != ficha2 && lista1.get(7) != ficha2) {
-            uti = uti+1;
+            uti = uti + 1;
         }
         if (lista1.get(2) != ficha2 && lista1.get(5) != ficha2 && lista1.get(8) != ficha2) {
-            uti = uti+1;
+            uti = uti + 1;
         }
 
         if (lista1.get(0) != ficha2 && lista1.get(4) != ficha2 && lista1.get(8) != ficha2) {
-            uti = uti+1;
+            uti = uti + 1;
         }
         if (lista1.get(2) != ficha2 && lista1.get(4) != ficha2 && lista1.get(6) != ficha2) {
-            uti = uti+1;
+            uti = uti + 1;
         }
         return uti;
     }
-   
+
 }
