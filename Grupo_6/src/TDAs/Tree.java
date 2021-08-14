@@ -2,7 +2,7 @@
 package TDAs;
 
 import java.util.ArrayList;
-
+//c
 public class Tree {
     TreeNode root;
     //
@@ -21,7 +21,7 @@ public class Tree {
         this.root= tn;
         
     }
-    
+    //
     public Tree(TreeNode root) {
         this.root = root;
     }
