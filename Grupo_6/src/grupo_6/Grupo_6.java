@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package grupo_6;
-
+// 
 import TDAs.Tree;
 import TDAs.TreeNode;
 import static Tablero.IA.*;
