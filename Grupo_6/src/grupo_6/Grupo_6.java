@@ -31,6 +31,7 @@ public class Grupo_6 extends Application {
     Button b2 = new Button("EMPEZAR");
     Button b3 = new Button("OK");
     Button b4 = new Button("COMENZAR");
+    Button tablerocomp = new Button("mostrar tableros");
     Label l2 = new Label("Modo");
     Label l3 = new Label("Tres en Raya");
     Label l4 = new Label("Seleccione si va a ser X o O: ");
@@ -70,6 +71,17 @@ public class Grupo_6 extends Application {
     @Override
     public void start(Stage primaryStage) {
         panel1.setStyle("-fx-background-color: BEIGE;");
+         ArrayList<Integer>a=new ArrayList<>();
+                a.add(0);
+                a.add(1);
+                a.add(2);
+                a.add(1);
+                a.add(0);
+                a.add(0);
+                a.add(2);
+                a.add(1);
+                a.add(0);
+        ventanatablero(a);
         panel1.setAlignment(Pos.CENTER);
         Label bienvenido = new Label("BIENVENIDO");
         bienvenido.setStyle("-fx-alignment: center ");
@@ -269,7 +281,7 @@ public class Grupo_6 extends Application {
         list6.addAll(bo7, bo8, bo9);
         list7.addAll(fila1, fila2, fila3);
         paneljuego.setSpacing(20);
-        list3.addAll(l3, paneljuego);
+        list3.addAll(l3,tablerocomp,paneljuego);
         if (turno == 2) {
             turnoMaquina();
             System.out.println("Compara 1 " + compara1);
@@ -673,6 +685,73 @@ public class Grupo_6 extends Application {
             }
         }
     }
+    
+     public void ventanatablero(ArrayList<Integer> a) {
+        tablerocomp.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                VBox panela=new VBox();
+                panela.setSpacing(10);
+                ObservableList penal = panela.getChildren();
+                Label c=tablerolabel(a);
+                c.setStyle("-fx-background-color: aqua;");
+                penal.addAll(c);
+                Stage sta=new Stage();
+                panela.setStyle("-fx-background-color: BEIGE;");
+                Scene escena = new Scene(panela, 500, 500);
+                sta.setScene(escena);
+                sta.show();
+            }
+        });
+    }
+    public Label tablerolabel(ArrayList<Integer> a){
+        String cadena1="";
+        String cadena2="";
+        String cadena3="";
+        Label l=new Label("");
+        for(int i=0;i<a.size();i++){
+            if(i>=0 && i<=2){
+                if(a.get(i)==0){
+                   cadena1+=" |_| ";
+                }
+            
+                if(a.get(i)==1){
+                   cadena1+=" |X| ";
+                }
+                if(a.get(i)==2){
+                   cadena1+=" |O| ";
+                }
+            } 
+            if(i>=3 && i<=5){
+                if(a.get(i)==0){
+                   cadena2+=" |_| ";
+                }
+            
+                if(a.get(i)==1){
+                   cadena2+=" |X| ";
+                }
+                if(a.get(i)==2){
+                   cadena2+=" |O| ";
+                }
+            } 
+            if(i>=6){
+                if(a.get(i)==0){
+                   cadena3+=" |_| ";
+                }
+            
+                if(a.get(i)==1){
+                   cadena3+=" |X| ";
+                }
+                if(a.get(i)==2){
+                   cadena3+=" |O| ";
+                }
+            } 
+            
+        }
+        l.setText(cadena1+"\n"+cadena2+"\n"+cadena3);
+        return l;
+    
+    } 
 
     /**
      * @param args the command line arguments
