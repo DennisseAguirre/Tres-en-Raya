@@ -9,7 +9,13 @@ import TDAs.Tree;
 import TDAs.TreeNode;
 import static Tablero.IA.*;
 import Tablero.Tablero;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JOptionPane;
 
 public class Grupo_6 extends Application {
 
@@ -32,6 +39,8 @@ public class Grupo_6 extends Application {
     Button b3 = new Button("OK");
     Button b4 = new Button("COMENZAR");
     Button tablerocomp = new Button("mostrar tableros");
+    Button salir = new Button("Salir");
+    Button reiniciar = new Button("Reiniciar");
     Label l2 = new Label("Modo");
     Label l3 = new Label("Tres en Raya");
     Label l4 = new Label("Seleccione si va a ser X o O: ");
@@ -96,10 +105,17 @@ public class Grupo_6 extends Application {
         primaryStage.setTitle("Tres en Raya");
         primaryStage.setScene(scene);
         primaryStage.show();
-        ventanaSeleccion(primaryStage, b1);
+        ventanaSeleccion(primaryStage, b1,salir);
     }
 
-    public void ventanaSeleccion(Stage s, Button b) {
+    public void ventanaSeleccion(Stage s, Button b, Button salir) {
+        salir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                JOptionPane.showMessageDialog(null, "Gracias por jugar");
+                System.exit(0);
+            }
+        });
         b.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -108,7 +124,7 @@ public class Grupo_6 extends Application {
                 panelmodo.setSpacing(40);
                 panelmodo.setAlignment(Pos.CENTER);
                 aviso.setVisible(false);
-                list8.addAll(l6, combo3, b3, aviso);
+                list8.addAll(l6, combo3, b3, salir,aviso );
                 panelmodo.setStyle("-fx-background-color: BEIGE;");
                 Scene scene4 = new Scene(panelmodo, 500, 500);
                 Stage s4 = new Stage();
@@ -121,6 +137,13 @@ public class Grupo_6 extends Application {
     }
 
     public void ventanaModo(Stage s, Button b) {
+        salir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                JOptionPane.showMessageDialog(null, "Gracias por jugar");
+                System.exit(0);
+            }
+        });
         b.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -170,7 +193,7 @@ public class Grupo_6 extends Application {
                     panel12.setSpacing(20);
                     panel12.setAlignment(Pos.CENTER);
                     aviso2.setVisible(false);
-                    list2.addAll(panelxo, panel12, b2, aviso2);
+                    list2.addAll(panelxo, panel12, b2,salir, aviso2);
                     panel2.setStyle("-fx-background-color: BEIGE;");
                     panel2.setSpacing(40);
                     Scene scene2 = new Scene(panel2, 500, 500);
@@ -184,6 +207,14 @@ public class Grupo_6 extends Application {
     }
 
     public void ventanaUsuario(Stage s, Button b) {
+        salir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                JOptionPane.showMessageDialog(null, "Gracias por jugar");
+                System.exit(0);
+            }
+        });
+        
         b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -214,6 +245,13 @@ public class Grupo_6 extends Application {
     }
 
     public void ventanaUsuario2(Stage s, Button b) {
+        salir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                JOptionPane.showMessageDialog(null, "Gracias por jugar");
+                System.exit(0);
+            }
+        });
         b4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -258,6 +296,21 @@ public class Grupo_6 extends Application {
     }
 
     public void panelJuego() {
+        
+        reiniciar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                JOptionPane.showMessageDialog(null, "Volvamos a empezar");
+                try {
+                    restartApplication();
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(Grupo_6.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Grupo_6.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
         Button bo1 = new Button(" ");
         Button bo2 = new Button(" ");
         Button bo3 = new Button(" ");
@@ -281,11 +334,12 @@ public class Grupo_6 extends Application {
         list6.addAll(bo7, bo8, bo9);
         list7.addAll(fila1, fila2, fila3);
         paneljuego.setSpacing(20);
-        list3.addAll(l3, tablerocomp, paneljuego);
+        list3.addAll(l3, tablerocomp, paneljuego, salir, reiniciar);
         if (turno == 2) {
             turnoMaquina();
             actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
         }
+        
         
         bo1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -934,6 +988,24 @@ public class Grupo_6 extends Application {
         return l;
 
     }
+    
+    // Metodo que reinicia la aplicacion
+    public static void restartApplication() throws URISyntaxException, IOException {
+        final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+        final File currentJar = new File(Grupo_6.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+        if (!currentJar.getName().endsWith(".jar")) {
+            return;
+        }
+        final ArrayList<String> command = new ArrayList<String>();
+        command.add(javaBin);
+        command.add("-jar");
+        command.add(currentJar.getPath());
+
+        final ProcessBuilder builder = new ProcessBuilder((List<String>) command);
+        builder.start();
+        System.exit(0);
+    }
+    
 
     /**
      * @param args the command line arguments
