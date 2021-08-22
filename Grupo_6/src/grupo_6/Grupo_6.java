@@ -79,7 +79,7 @@ public class Grupo_6 extends Application {
     int ficha2 = 2;
     int turno = 7;
     boolean fin = false;
-    boolean contadorTurno=true;
+    boolean contadorTurno = true;
 
     ArrayList utilidades = new ArrayList();
 
@@ -235,10 +235,10 @@ public class Grupo_6 extends Application {
                     }
                     if (combo2.getValue().equals("jugador 1")) {
                         turno = 1;
-                        contadorTurno=true;
+                        contadorTurno = true;
                     } else if (combo2.getValue().equals("jugador 2")) {
                         turno = 2;
-                        contadorTurno=false;
+                        contadorTurno = false;
                     }
                     s.close();
                     panel3.setStyle("-fx-background-color: BEIGE;");
@@ -806,7 +806,7 @@ public class Grupo_6 extends Application {
             posiblesJugadas(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2));
             compara1.clear();
             compara1.addAll(treeTablero.getRoot().getContent());
-            
+
             treeTablero = new Tree(tn1);
             rellenarVBox();
         }
@@ -967,15 +967,15 @@ public class Grupo_6 extends Application {
         Label c1 = tablerolabel(treeTablero.getRoot().getContent());
         c1.setStyle("-fx-background-color: aqua;");
         hbox.getChildren().add(c1);
-        Tree tre1 =new Tree();
-        if(contadorTurno==true){
+        Tree tre1 = new Tree();
+        if (contadorTurno == true) {
             tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha1);
-            contadorTurno=false;
-        }else{
+            contadorTurno = false;
+        } else {
             tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2);
-            contadorTurno=true;
+            contadorTurno = true;
         }
-        
+
         ArrayList<TreeNode> ar = tre1.getRoot().getHijos();
         for (int i = 0; i < ar.size(); i++) {
             Label c2 = tablerolabel(ar.get(i).getContent());
@@ -999,6 +999,7 @@ public class Grupo_6 extends Application {
                 Scene escena = new Scene(panela, 500, 500);
                 sta.setScene(escena);
                 sta.show();
+                tablerocomp.setVisible(false);
             }
         });
     }
@@ -1013,7 +1014,6 @@ public class Grupo_6 extends Application {
                 if (a.get(i) == 0) {
                     cadena1 += " |_| ";
                 }
-
                 if (a.get(i) == 1) {
                     cadena1 += " |X| ";
                 }
@@ -1025,7 +1025,6 @@ public class Grupo_6 extends Application {
                 if (a.get(i) == 0) {
                     cadena2 += " |_| ";
                 }
-
                 if (a.get(i) == 1) {
                     cadena2 += " |X| ";
                 }
@@ -1037,7 +1036,6 @@ public class Grupo_6 extends Application {
                 if (a.get(i) == 0) {
                     cadena3 += " |_| ";
                 }
-
                 if (a.get(i) == 1) {
                     cadena3 += " |X| ";
                 }
@@ -1045,7 +1043,6 @@ public class Grupo_6 extends Application {
                     cadena3 += " |O| ";
                 }
             }
-
         }
         l.setText(cadena1 + "\n" + cadena2 + "\n" + cadena3);
         return l;
@@ -1079,19 +1076,6 @@ public class Grupo_6 extends Application {
         launch(args);
 
         //Estacion  de pruebas, no molestar
-        ArrayList l1 = new ArrayList();
-        l1.add(1);
-        l1.add(2);
-        l1.add(1);
-        l1.add(0);
-        l1.add(1);
-        l1.add(2);
-        l1.add(0);
-        l1.add(1);
-        l1.add(0);
-
-        Tree tre1 = generarTreeGeneral(l1, 1);
-
     }
 
 }
