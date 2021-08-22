@@ -61,6 +61,8 @@ public class Grupo_6 extends Application {
     HBox fila1 = new HBox();
     HBox fila2 = new HBox();
     HBox fila3 = new HBox();
+    HBox hbox1 = new HBox();
+    HBox hbox2 = new HBox();
     ObservableList list2 = panel2.getChildren();
     ObservableList list3 = panel3.getChildren();
     ObservableList list4 = fila1.getChildren();
@@ -76,6 +78,8 @@ public class Grupo_6 extends Application {
     int ficha2 = 2;
     int turno = 7;
     boolean fin = false;
+
+    ArrayList utilidades = new ArrayList();
 
     @Override
     public void start(Stage primaryStage) {
@@ -105,7 +109,7 @@ public class Grupo_6 extends Application {
         primaryStage.setTitle("Tres en Raya");
         primaryStage.setScene(scene);
         primaryStage.show();
-        ventanaSeleccion(primaryStage, b1,salir);
+        ventanaSeleccion(primaryStage, b1, salir);
     }
 
     public void ventanaSeleccion(Stage s, Button b, Button salir) {
@@ -124,7 +128,7 @@ public class Grupo_6 extends Application {
                 panelmodo.setSpacing(40);
                 panelmodo.setAlignment(Pos.CENTER);
                 aviso.setVisible(false);
-                list8.addAll(l6, combo3, b3, salir,aviso );
+                list8.addAll(l6, combo3, b3, salir, aviso);
                 panelmodo.setStyle("-fx-background-color: BEIGE;");
                 Scene scene4 = new Scene(panelmodo, 500, 500);
                 Stage s4 = new Stage();
@@ -193,7 +197,7 @@ public class Grupo_6 extends Application {
                     panel12.setSpacing(20);
                     panel12.setAlignment(Pos.CENTER);
                     aviso2.setVisible(false);
-                    list2.addAll(panelxo, panel12, b2,salir, aviso2);
+                    list2.addAll(panelxo, panel12, b2, salir, aviso2);
                     panel2.setStyle("-fx-background-color: BEIGE;");
                     panel2.setSpacing(40);
                     Scene scene2 = new Scene(panel2, 500, 500);
@@ -214,7 +218,7 @@ public class Grupo_6 extends Application {
                 System.exit(0);
             }
         });
-        
+
         b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -296,7 +300,7 @@ public class Grupo_6 extends Application {
     }
 
     public void panelJuego() {
-        
+
         reiniciar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -310,7 +314,7 @@ public class Grupo_6 extends Application {
                 }
             }
         });
-        
+
         Button bo1 = new Button(" ");
         Button bo2 = new Button(" ");
         Button bo3 = new Button(" ");
@@ -334,13 +338,12 @@ public class Grupo_6 extends Application {
         list6.addAll(bo7, bo8, bo9);
         list7.addAll(fila1, fila2, fila3);
         paneljuego.setSpacing(20);
-        list3.addAll(l3, tablerocomp, paneljuego, salir, reiniciar);
+        list3.addAll(l3, tablerocomp, paneljuego, salir, reiniciar, hbox1, hbox2);
         if (turno == 2) {
             turnoMaquina();
             actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
         }
-        
-        
+
         bo1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -648,9 +651,7 @@ public class Grupo_6 extends Application {
                     ficha2 = 1;
                     ficha1 = 2;
                 }
-                System.out.println("Turno maquina");
                 turnoMaquina();
-                System.out.println("Actualizacion");
                 actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
             }
         }
@@ -769,20 +770,24 @@ public class Grupo_6 extends Application {
                 if (treeTablero.getContent().get(i) == 0) {
                     if (ficha2 == 1) {
                         ar.add(1);
-                    }
-                    else{
+                    } else {
                         ar.add(2);
                     }
                 } else {
                     ar.add(treeTablero.getContent().get(i));
                 }
             }
+            utilidades.clear();
+            posiblesJugadas( generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2));
             TreeNode tn1 = new TreeNode(ar);
+            
             compara1.clear();
             compara1.addAll(treeTablero.getRoot().getContent());
             treeTablero = new Tree(tn1);
         } else {
             TreeNode tn1 = calificarUtilidadMaxima(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2), ficha2);
+            utilidades = listaUtilidadesMinimas(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2), ficha2);
+            posiblesJugadas(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2));
             compara1.clear();
             compara1.addAll(treeTablero.getRoot().getContent());
             treeTablero = new Tree(tn1);
@@ -921,6 +926,27 @@ public class Grupo_6 extends Application {
         checkWin(treeTablero.getRoot().getContent());
     }
 
+    public void posiblesJugadas(Tree tre1){
+        hbox1.getChildren().clear();
+        hbox2.getChildren().clear();
+        ObservableList a = hbox1.getChildren();
+        ObservableList b = hbox2.getChildren();
+        hbox1.setSpacing(30);
+        Label lista =new Label();
+        ArrayList<TreeNode> ar= tre1.getRoot().getHijos();
+        for (int i=0; i<ar.size();i++){
+            System.out.println(i);
+            System.out.println(""+ar.get(i).getContent() );
+            Label c = tablerolabel(ar.get(i).getContent());
+            a.addAll(c);
+        }
+        
+        lista.setText(utilidades.toString());
+        b.addAll(lista);
+        
+        
+    }
+    
     public void ventanatablero(ArrayList<Integer> a) {
         tablerocomp.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -988,7 +1014,7 @@ public class Grupo_6 extends Application {
         return l;
 
     }
-    
+
     // Metodo que reinicia la aplicacion
     public static void restartApplication() throws URISyntaxException, IOException {
         final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
@@ -1005,7 +1031,6 @@ public class Grupo_6 extends Application {
         builder.start();
         System.exit(0);
     }
-    
 
     /**
      * @param args the command line arguments
@@ -1031,23 +1056,6 @@ public class Grupo_6 extends Application {
 
         Tree tre1 = generarTreeGeneral(l1, 1);
 
-//        System.out.println("PADRE");
-//        System.out.println(tre1.getRoot().getContent());
-//        
-//        for(int i=0; i<tre1.getHijosLista().size(); i++){
-//            System.out.println("HIJO"+(i+1));
-//            System.out.println(tre1.getHijosLista().get(i).getContent());
-//            
-//            for(int e=0; e<tre1.getHijosLista().get(i).getHijos().size(); e++){
-//                System.out.println("NIETO " +(e+1));
-//                System.out.println(tre1.getHijosLista().get(i).getHijos().get(e).getContent());
-//            }
-//        }
-        /*ArrayList ar = listaUtilidadesMinimas(tre1, 1);
-
-        System.out.println(ar.toString());
-        TreeNode tn3 = calificarUtilidadMaxima(tre1, 1);
-        System.out.println(tn3.getContent().toString());*/
     }
 
 }

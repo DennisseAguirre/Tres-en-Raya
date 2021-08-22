@@ -23,7 +23,6 @@ public class IA {
         TreeNode nodo1 = new TreeNode(list1);
         nodo1.generarHijos(ficha1);
         for (int i = 0; i <= nodo1.getHijos().size() - 1; i++) {
-            System.out.println(i);
             nodo1.getHijos().get(i).generarHijos(ficha2);
         }
         Tree tre1 = new Tree(nodo1);
@@ -124,5 +123,30 @@ public class IA {
         }
         return uti;
     }
+    
+    //public static ArrayList intermediosDeArbol 
+/*
+    public static Tree generarSuperTree(Tree treeTablero, int ficha1, int turno) {
+        
+        if (turno == 1) {
+            int ficha2 = 1;
+            if (ficha1 == 1) {
+                ficha2 = 2;
+            } else {
+                ficha2 = 1;
+            }
+        }else{
+            
+        }
 
+        TreeNode nodo1 = new TreeNode(list1);
+        nodo1.generarHijos(ficha1);
+        for (int i = 0; i <= nodo1.getHijos().size() - 1; i++) {
+            System.out.println(i);
+            nodo1.getHijos().get(i).generarHijos(ficha2);
+        }
+        Tree tre1 = new Tree(nodo1);
+
+        return tre1;
+    }*/
 }

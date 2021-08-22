@@ -43,37 +43,37 @@ public class Tablero {
     //Revisa si ha ganado 1 o 2 o si ya no se puede seguir jugando
     public int ganadorTabla() {
         if (this.tabla.get(0) == this.tabla.get(1) && this.tabla.get(1) == this.tabla.get(2) && this.tabla.get(0) != 0) {
-            System.out.println("Los primeros son iguales");
+            //System.out.println("Los primeros son iguales");
             return this.tabla.get(0);
         }
         if (this.tabla.get(3) == this.tabla.get(4) && this.tabla.get(4) == this.tabla.get(5) && this.tabla.get(3) != 0) {
-            System.out.println("Los segundos son iguales");
+            //System.out.println("Los segundos son iguales");
             return this.tabla.get(3);
         }
         if (this.tabla.get(6) == this.tabla.get(7) && this.tabla.get(7) == this.tabla.get(8) && this.tabla.get(6) != 0) {
-            System.out.println("Los terceros son iguales");
+            //System.out.println("Los terceros son iguales");
             return this.tabla.get(6);
         }
 
         if (this.tabla.get(0) == this.tabla.get(3) && this.tabla.get(3) == this.tabla.get(6) && this.tabla.get(0) != 0) {
-            System.out.println("Los primeros son iguales");
+            //System.out.println("Los primeros son iguales");
             return this.tabla.get(0);
         }
         if (this.tabla.get(1) == this.tabla.get(4) && this.tabla.get(4) == this.tabla.get(7) && this.tabla.get(1) != 0) {
-            System.out.println("Los segundos son iguales");
+            //System.out.println("Los segundos son iguales");
             return this.tabla.get(1);
         }
         if (this.tabla.get(2) == this.tabla.get(5) && this.tabla.get(5) == this.tabla.get(8) && this.tabla.get(2) != 0) {
-            System.out.println("Los terceros son iguales");
+            //System.out.println("Los terceros son iguales");
             return this.tabla.get(2);
         }
 
         if (this.tabla.get(0) == this.tabla.get(4) && this.tabla.get(4) == this.tabla.get(8) && this.tabla.get(0) != 0) {
-            System.out.println("Los diagonales son iguales");
+            //System.out.println("Los diagonales son iguales");
             return this.tabla.get(0);
         }
         if (this.tabla.get(2) == this.tabla.get(4) && this.tabla.get(4) == this.tabla.get(6) && this.tabla.get(2) != 0) {
-            System.out.println("Los diagonales son iguales");
+            //System.out.println("Los diagonales son iguales");
             return this.tabla.get(2);
         }
 
