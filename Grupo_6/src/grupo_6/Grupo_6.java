@@ -80,6 +80,8 @@ public class Grupo_6 extends Application {
     int turno = 7;
     boolean fin = false;
     boolean contadorTurno = true;
+    boolean pvpON=false;
+    boolean cpuvcpuON=false;
 
     ArrayList utilidades = new ArrayList();
 
@@ -158,6 +160,7 @@ public class Grupo_6 extends Application {
                 if (combo3.getValue() == null) {
                     aviso.setVisible(true);
                 } else if (combo3.getValue() == "Computadora vs Computadora") {
+                    cpuvcpuON=true;
                     turno = 47;
                     s.close();
                     panelJuego();
@@ -167,6 +170,7 @@ public class Grupo_6 extends Application {
                     s3.setScene(scene3);
                     s3.show();
                 } else if (combo3.getValue() == "Jugador vs Jugador") {
+                    pvpON=true;
                     s.close();
                     llenarCombo1();
                     panel2.setSpacing(10);
@@ -968,11 +972,24 @@ public class Grupo_6 extends Application {
         c1.setStyle("-fx-background-color: aqua;");
         hbox.getChildren().add(c1);
         Tree tre1 = new Tree();
-        if (contadorTurno == true) {
+        System.out.println("pvp "+pvpON);
+        if (contadorTurno == true && pvpON==false && cpuvcpuON==false) {
             tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha1);
             contadorTurno = false;
-        } else {
+        } else if(contadorTurno == false && pvpON==false && cpuvcpuON==false) {
             tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2);
+            contadorTurno = true;
+        }else if(contadorTurno == true && pvpON==true && cpuvcpuON==false){
+            tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha1);
+            contadorTurno = false;
+        }else if(contadorTurno == false && pvpON==true && cpuvcpuON==false){
+            tre1= generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2);
+            contadorTurno = true;
+        }else if(contadorTurno == true && cpuvcpuON==true){
+            tre1= generarTreeGeneral(treeTablero.getRoot().getContent(), 1);
+            contadorTurno = false;
+        }else{
+            tre1= generarTreeGeneral(treeTablero.getRoot().getContent(), 2);
             contadorTurno = true;
         }
 
