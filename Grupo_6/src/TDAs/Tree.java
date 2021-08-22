@@ -53,7 +53,7 @@ public class Tree {
         if (this.root.hijos == null)
             this.root.hijos = new ArrayList<TreeNode>();
     }
-    
+    // Agregar un nodo al árbol
     public void adddNodoHijo(TreeNode treeNode) {
         iniHijos();
         this.root.hijos.add(treeNode);
@@ -62,7 +62,5 @@ public class Tree {
     public ArrayList<Integer> getContent() {
         return root.getContent();
     }
-    //Largest Value
-    //find
-    //lvl
+    
 }

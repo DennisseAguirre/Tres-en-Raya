@@ -90,16 +90,6 @@ public class Grupo_6 extends Application {
     @Override
     public void start(Stage primaryStage) {
         panel1.setStyle("-fx-background-color: BEIGE;");
-        ArrayList<Integer> a = new ArrayList<>();
-        a.add(0);
-        a.add(1);
-        a.add(2);
-        a.add(1);
-        a.add(0);
-        a.add(0);
-        a.add(2);
-        a.add(1);
-        a.add(0);
         ventanatablero();
         verTiradasON();
         comodinON();
@@ -113,6 +103,7 @@ public class Grupo_6 extends Application {
         ObservableList list = panel1.getChildren();
         panel1.setSpacing(20);
         list.addAll(bienvenido, b1);
+        // Esceneario de la ventana principal
         Scene scene = new Scene(panel1, 500, 500);
         primaryStage.setTitle("Tres en Raya");
         primaryStage.setScene(scene);
@@ -120,7 +111,8 @@ public class Grupo_6 extends Application {
         ventanaSeleccion(primaryStage, b1, salir);
         supraBox.setSpacing(30);
     }
-
+   
+    // Metodo que abre otra ventana que le permite al usuario elegir el modo de juego 
     public void ventanaSeleccion(Stage s, Button b, Button salir) {
         salir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -148,7 +140,7 @@ public class Grupo_6 extends Application {
         });
 
     }
-    // Metodo que abre una ventana , en donde el usuario debe elegir el modo de en que desea jugador:
+    // Metodo que abre una ventana , dependiendo del modo que eligio el cliente
     public void ventanaModo(Stage s, Button b) {
         salir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -348,6 +340,7 @@ public class Grupo_6 extends Application {
         fila1.setSpacing(10);
         fila2.setSpacing(10);
         fila3.setSpacing(10);
+        // Agregando botones a las filas para formar el tres en raya
         list4.addAll(bo1, bo2, bo3);
         list5.addAll(bo4, bo5, bo6);
         list6.addAll(bo7, bo8, bo9);
@@ -1047,7 +1040,7 @@ public class Grupo_6 extends Application {
         c2.setText("La lista de utilidades es la siguiente: ");
         b.addAll(c2, lista);
     }
-
+    // Método que agrega los tableros que usa la computadora al momento de jugar.
     public void rellenarVBox() {
         HBox hbox = new HBox();
         hbox.setSpacing(30);
@@ -1165,9 +1158,6 @@ public class Grupo_6 extends Application {
                 VBox layout = supraBox;
                 layout.setSpacing(10);
                 ObservableList panelt = layout.getChildren();
-                //Label c = tablerolabel(a);
-                //c.setStyle("-fx-background-color: aqua;");
-                //penal.addAll(c);
                 Stage sta = new Stage();
                 layout.setStyle("-fx-background-color: BEIGE;");
                 Scene escena = new Scene(layout, 900, 700);
@@ -1243,14 +1233,11 @@ public class Grupo_6 extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-//        Tablero tabl1= new Tablero();
-//        ArrayList ar1= new ArrayList();
-//        ar1.add(1);ar1.add(2);ar1.add(3);ar1.add(4);ar1.add(5);ar1.add(6);ar1.add(7);ar1.add(8);ar1.add(9);
+    public static void main(String[] args) {       
 
         launch(args);
 
-        //Estacion  de pruebas, no molestar
+        
     }
 
 }

@@ -13,6 +13,7 @@ import java.util.Collections;
 public class IA {
 
     //Mini Max
+    // Metodo que genera el arbol general de tres en raya.
     public static Tree generarTreeGeneral(ArrayList<Integer> list1, int ficha1) {
         int ficha2 = 1;
         if (ficha1 == 1) {
@@ -30,7 +31,7 @@ public class IA {
         return tre1;
     }
 
-    //UTILIDADES
+    //Metodo que sirve para escoger al tablero que garantiza la mayor utilidad
     public static TreeNode calificarUtilidadMaxima(Tree tre1, int ficha1) {
         ArrayList<Integer> listaUtilidad = listaUtilidadesMinimas(tre1, ficha1);
         if (listaUtilidad.isEmpty()) {
@@ -47,7 +48,7 @@ public class IA {
         }
         return (tre1.getHijosLista().get(index));
     }
-
+    // Metodo que devuelve un ArrayList con la lista de utilidades minimas
     public static ArrayList listaUtilidadesMinimas(Tree tre1, int ficha1) {
         ArrayList listaUti = new ArrayList();
         for (int i = 0; i < tre1.getHijosLista().size(); i++) {
@@ -68,7 +69,7 @@ public class IA {
         }
         return listaUti;
     }
-
+    // Metodo que calcula la utilidad de un tablero
     public static int calcularUtilidades(ArrayList lista1, int ficha1) {
         int ficha2 = 1;
         if (ficha1 == 1) {
@@ -86,7 +87,7 @@ public class IA {
         int utiTot = utiCasa - utiVisita;
         return utiTot;
     }
-
+    // Metodo que calcula el  número total de filas, columnas y diagonales disponibles en el tablero para el jugador correspondiente.
     public static int calcularUtilidadesPeroEstaVezSi(ArrayList<Integer> lista1, int ficha1) {
         int ficha2 = 1;
         if (ficha1 == 1) {

@@ -10,7 +10,8 @@ import java.util.ArrayList;
 public class Tablero {
 
     ArrayList<Integer> tabla = new ArrayList<>();
-
+    
+    // Iniciar la lista tabla con ceros.
     public Tablero() {
         tabla.add(0);
         tabla.add(0);
