@@ -41,6 +41,8 @@ public class Grupo_6 extends Application {
     Button tablerocomp = new Button("mostrar tableros");
     Button salir = new Button("Salir");
     Button reiniciar = new Button("Reiniciar");
+    Button comodin = new Button("Comodin");
+    Button verTiradas = new Button("Ver tiradas");
     Label l2 = new Label("Modo");
     Label l3 = new Label("Tres en Raya");
     Label l4 = new Label("Seleccione si va a ser X o O: ");
@@ -348,7 +350,11 @@ public class Grupo_6 extends Application {
         list6.addAll(bo7, bo8, bo9);
         list7.addAll(fila1, fila2, fila3);
         paneljuego.setSpacing(20);
-        list3.addAll(l3, tablerocomp, paneljuego, salir, reiniciar, hbox1, hbox2);
+        HBox paneloption=new HBox();
+        paneloption.getChildren().addAll(comodin,reiniciar,verTiradas);
+        paneloption.setAlignment(Pos.CENTER);
+        paneloption.setSpacing(10);
+        list3.addAll(l3, tablerocomp, paneljuego, salir,paneloption, hbox1, hbox2);
         if (turno == 2) {
             turnoMaquina();
             actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -1013,7 +1019,7 @@ public class Grupo_6 extends Application {
                 //penal.addAll(c);
                 Stage sta = new Stage();
                 panela.setStyle("-fx-background-color: BEIGE;");
-                Scene escena = new Scene(panela, 500, 500);
+                Scene escena = new Scene(panela,900, 700);
                 sta.setScene(escena);
                 sta.show();
                 tablerocomp.setVisible(false);
