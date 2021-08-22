@@ -63,6 +63,7 @@ public class Grupo_6 extends Application {
     HBox fila3 = new HBox();
     HBox hbox1 = new HBox();
     HBox hbox2 = new HBox();
+    VBox supraBox = new VBox();
     ObservableList list2 = panel2.getChildren();
     ObservableList list3 = panel3.getChildren();
     ObservableList list4 = fila1.getChildren();
@@ -78,6 +79,7 @@ public class Grupo_6 extends Application {
     int ficha2 = 2;
     int turno = 7;
     boolean fin = false;
+    boolean contadorTurno=true;
 
     ArrayList utilidades = new ArrayList();
 
@@ -110,6 +112,7 @@ public class Grupo_6 extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         ventanaSeleccion(primaryStage, b1, salir);
+        supraBox.setSpacing(30);
     }
 
     public void ventanaSeleccion(Stage s, Button b, Button salir) {
@@ -232,8 +235,10 @@ public class Grupo_6 extends Application {
                     }
                     if (combo2.getValue().equals("jugador 1")) {
                         turno = 1;
+                        contadorTurno=true;
                     } else if (combo2.getValue().equals("jugador 2")) {
                         turno = 2;
+                        contadorTurno=false;
                     }
                     s.close();
                     panel3.setStyle("-fx-background-color: BEIGE;");
@@ -300,6 +305,7 @@ public class Grupo_6 extends Application {
     }
 
     public void panelJuego() {
+        rellenarVBox();
 
         reiniciar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -363,6 +369,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
+                    rellenarVBox();
                     checkWin(treeTablero.getRoot().getContent());
                     if (turno == 7) {
                         if (ficha1 == 1) {
@@ -397,6 +404,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
+                    rellenarVBox();
                     checkWin(treeTablero.getRoot().getContent());
                     if (turno == 7) {
                         if (ficha1 == 1) {
@@ -430,6 +438,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
+                    rellenarVBox();
                     checkWin(treeTablero.getRoot().getContent());
                     if (turno == 7) {
                         if (ficha1 == 1) {
@@ -463,6 +472,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
+                    rellenarVBox();
                     checkWin(treeTablero.getRoot().getContent());
                     if (turno == 7) {
                         if (ficha1 == 1) {
@@ -496,6 +506,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
+                    rellenarVBox();
                     checkWin(treeTablero.getRoot().getContent());
                     if (turno == 7) {
                         if (ficha1 == 1) {
@@ -529,6 +540,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
+                    rellenarVBox();
                     checkWin(treeTablero.getRoot().getContent());
                     if (turno == 7) {
                         if (ficha1 == 1) {
@@ -562,6 +574,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
+                    rellenarVBox();
                     checkWin(treeTablero.getRoot().getContent());
                     if (turno == 7) {
                         if (ficha1 == 1) {
@@ -595,6 +608,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
+                    rellenarVBox();
                     checkWin(treeTablero.getRoot().getContent());
                     if (turno == 7) {
                         if (ficha1 == 1) {
@@ -628,6 +642,7 @@ public class Grupo_6 extends Application {
                         TreeNode tn1 = new TreeNode(ar);
                         treeTablero = new Tree(tn1);
                     }
+                    rellenarVBox();
                     checkWin(treeTablero.getRoot().getContent());
                     if (turno == 7) {
                         if (ficha1 == 1) {
@@ -778,20 +793,24 @@ public class Grupo_6 extends Application {
                 }
             }
             utilidades.clear();
-            posiblesJugadas( generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2));
+            posiblesJugadas(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2));
             TreeNode tn1 = new TreeNode(ar);
-            
+
             compara1.clear();
             compara1.addAll(treeTablero.getRoot().getContent());
             treeTablero = new Tree(tn1);
+            rellenarVBox();
         } else {
             TreeNode tn1 = calificarUtilidadMaxima(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2), ficha2);
             utilidades = listaUtilidadesMinimas(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2), ficha2);
             posiblesJugadas(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2));
             compara1.clear();
             compara1.addAll(treeTablero.getRoot().getContent());
+            
             treeTablero = new Tree(tn1);
+            rellenarVBox();
         }
+
     }
 
     public void actualizacionForzada(Button bo1, Button bo2, Button bo3, Button bo4, Button bo5, Button bo6, Button bo7, Button bo8, Button bo9, ArrayList compara1) {
@@ -926,37 +945,55 @@ public class Grupo_6 extends Application {
         checkWin(treeTablero.getRoot().getContent());
     }
 
-    public void posiblesJugadas(Tree tre1){
+    public void posiblesJugadas(Tree tre1) {
         hbox1.getChildren().clear();
         hbox2.getChildren().clear();
         ObservableList a = hbox1.getChildren();
         ObservableList b = hbox2.getChildren();
         hbox1.setSpacing(30);
-        Label lista =new Label();
-        ArrayList<TreeNode> ar= tre1.getRoot().getHijos();
-        for (int i=0; i<ar.size();i++){
-            System.out.println(i);
-            System.out.println(""+ar.get(i).getContent() );
+        Label lista = new Label();
+        ArrayList<TreeNode> ar = tre1.getRoot().getHijos();
+        for (int i = 0; i < ar.size(); i++) {
             Label c = tablerolabel(ar.get(i).getContent());
             a.addAll(c);
         }
-        
         lista.setText(utilidades.toString());
         b.addAll(lista);
-        
-        
     }
-    
+
+    public void rellenarVBox() {
+        HBox hbox = new HBox();
+        hbox.setSpacing(30);
+        Label c1 = tablerolabel(treeTablero.getRoot().getContent());
+        c1.setStyle("-fx-background-color: aqua;");
+        hbox.getChildren().add(c1);
+        Tree tre1 =new Tree();
+        if(contadorTurno==true){
+            tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha1);
+            contadorTurno=false;
+        }else{
+            tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2);
+            contadorTurno=true;
+        }
+        
+        ArrayList<TreeNode> ar = tre1.getRoot().getHijos();
+        for (int i = 0; i < ar.size(); i++) {
+            Label c2 = tablerolabel(ar.get(i).getContent());
+            hbox.getChildren().add(c2);
+        }
+        supraBox.getChildren().add(hbox);
+    }
+
     public void ventanatablero(ArrayList<Integer> a) {
         tablerocomp.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                VBox panela = new VBox();
+                VBox panela = supraBox;
                 panela.setSpacing(10);
                 ObservableList penal = panela.getChildren();
-                Label c = tablerolabel(a);
-                c.setStyle("-fx-background-color: aqua;");
-                penal.addAll(c);
+                //Label c = tablerolabel(a);
+                //c.setStyle("-fx-background-color: aqua;");
+                //penal.addAll(c);
                 Stage sta = new Stage();
                 panela.setStyle("-fx-background-color: BEIGE;");
                 Scene escena = new Scene(panela, 500, 500);
@@ -1012,7 +1049,6 @@ public class Grupo_6 extends Application {
         }
         l.setText(cadena1 + "\n" + cadena2 + "\n" + cadena3);
         return l;
-
     }
 
     // Metodo que reinicia la aplicacion
