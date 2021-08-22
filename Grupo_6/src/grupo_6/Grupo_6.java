@@ -82,8 +82,8 @@ public class Grupo_6 extends Application {
     int turno = 7;
     boolean fin = false;
     boolean contadorTurno = true;
-    boolean pvpON=false;
-    boolean cpuvcpuON=false;
+    boolean pvpON = false;
+    boolean cpuvcpuON = false;
 
     ArrayList utilidades = new ArrayList();
 
@@ -100,7 +100,9 @@ public class Grupo_6 extends Application {
         a.add(2);
         a.add(1);
         a.add(0);
-        ventanatablero(a);
+        ventanatablero();
+        verTiradasON();
+        comodinON();
         panel1.setAlignment(Pos.CENTER);
         Label bienvenido = new Label("BIENVENIDO");
         bienvenido.setStyle("-fx-alignment: center ");
@@ -162,7 +164,7 @@ public class Grupo_6 extends Application {
                 if (combo3.getValue() == null) {
                     aviso.setVisible(true);
                 } else if (combo3.getValue() == "Computadora vs Computadora") {
-                    cpuvcpuON=true;
+                    cpuvcpuON = true;
                     turno = 47;
                     s.close();
                     panelJuego();
@@ -172,7 +174,7 @@ public class Grupo_6 extends Application {
                     s3.setScene(scene3);
                     s3.show();
                 } else if (combo3.getValue() == "Jugador vs Jugador") {
-                    pvpON=true;
+                    //pvpON=true;
                     s.close();
                     llenarCombo1();
                     panel2.setSpacing(10);
@@ -312,7 +314,6 @@ public class Grupo_6 extends Application {
 
     public void panelJuego() {
         rellenarVBox();
-
         reiniciar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -326,7 +327,6 @@ public class Grupo_6 extends Application {
                 }
             }
         });
-
         Button bo1 = new Button(" ");
         Button bo2 = new Button(" ");
         Button bo3 = new Button(" ");
@@ -350,16 +350,17 @@ public class Grupo_6 extends Application {
         list6.addAll(bo7, bo8, bo9);
         list7.addAll(fila1, fila2, fila3);
         paneljuego.setSpacing(20);
-        HBox paneloption=new HBox();
-        paneloption.getChildren().addAll(comodin,reiniciar,verTiradas);
+        HBox paneloption = new HBox();
+        paneloption.getChildren().addAll(comodin, reiniciar, verTiradas);
         paneloption.setAlignment(Pos.CENTER);
         paneloption.setSpacing(10);
-        list3.addAll(l3, tablerocomp, paneljuego, salir,paneloption, hbox1, hbox2);
+        list3.addAll(l3, tablerocomp, paneljuego, salir, paneloption, hbox1, hbox2);
+        //Si el jugador va segundo la maquina empieza
         if (turno == 2) {
             turnoMaquina();
             actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
         }
-
+        //Las acciones de los botones al presionarlos para que estos cambien por X u O.
         bo1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -384,9 +385,12 @@ public class Grupo_6 extends Application {
                     if (turno == 7) {
                         if (ficha1 == 1) {
                             ficha1 = 2;
+                            ficha2 = 1;
                         } else if (ficha1 == 2) {
                             ficha1 = 1;
+                            ficha2 = 2;
                         }
+                        pvpON = true;
                     } else if (fin == false) {
                         turnoMaquina();
                         actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -419,9 +423,12 @@ public class Grupo_6 extends Application {
                     if (turno == 7) {
                         if (ficha1 == 1) {
                             ficha1 = 2;
+                            ficha2 = 1;
                         } else if (ficha1 == 2) {
                             ficha1 = 1;
+                            ficha2 = 2;
                         }
+                        pvpON = true;
                     } else if (fin == false) {
                         turnoMaquina();
                         actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -453,9 +460,12 @@ public class Grupo_6 extends Application {
                     if (turno == 7) {
                         if (ficha1 == 1) {
                             ficha1 = 2;
+                            ficha2 = 1;
                         } else if (ficha1 == 2) {
                             ficha1 = 1;
+                            ficha2 = 2;
                         }
+                        pvpON = true;
                     } else if (fin == false) {
                         turnoMaquina();
                         actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -487,9 +497,12 @@ public class Grupo_6 extends Application {
                     if (turno == 7) {
                         if (ficha1 == 1) {
                             ficha1 = 2;
+                            ficha2 = 1;
                         } else if (ficha1 == 2) {
                             ficha1 = 1;
+                            ficha2 = 2;
                         }
+                        pvpON = true;
                     } else if (fin == false) {
                         turnoMaquina();
                         actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -521,9 +534,12 @@ public class Grupo_6 extends Application {
                     if (turno == 7) {
                         if (ficha1 == 1) {
                             ficha1 = 2;
+                            ficha2 = 1;
                         } else if (ficha1 == 2) {
                             ficha1 = 1;
+                            ficha2 = 2;
                         }
+                        pvpON = true;
                     } else if (fin == false) {
                         turnoMaquina();
                         actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -555,9 +571,12 @@ public class Grupo_6 extends Application {
                     if (turno == 7) {
                         if (ficha1 == 1) {
                             ficha1 = 2;
+                            ficha2 = 1;
                         } else if (ficha1 == 2) {
                             ficha1 = 1;
+                            ficha2 = 2;
                         }
+                        pvpON = true;
                     } else if (fin == false) {
                         turnoMaquina();
                         actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -589,9 +608,12 @@ public class Grupo_6 extends Application {
                     if (turno == 7) {
                         if (ficha1 == 1) {
                             ficha1 = 2;
+                            ficha2 = 1;
                         } else if (ficha1 == 2) {
                             ficha1 = 1;
+                            ficha2 = 2;
                         }
+                        pvpON = true;
                     } else if (fin == false) {
                         turnoMaquina();
                         actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -623,9 +645,12 @@ public class Grupo_6 extends Application {
                     if (turno == 7) {
                         if (ficha1 == 1) {
                             ficha1 = 2;
+                            ficha2 = 1;
                         } else if (ficha1 == 2) {
                             ficha1 = 1;
+                            ficha2 = 2;
                         }
+                        pvpON = true;
                     } else if (fin == false) {
                         turnoMaquina();
                         actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -657,9 +682,12 @@ public class Grupo_6 extends Application {
                     if (turno == 7) {
                         if (ficha1 == 1) {
                             ficha1 = 2;
+                            ficha2 = 1;
                         } else if (ficha1 == 2) {
                             ficha1 = 1;
+                            ficha2 = 2;
                         }
+                        pvpON = true;
                     } else if (fin == false) {
                         turnoMaquina();
                         actualizacionForzada(bo1, bo2, bo3, bo4, bo5, bo6, bo7, bo8, bo9, compara1);
@@ -667,6 +695,7 @@ public class Grupo_6 extends Application {
                 }
             }
         });
+        //Metodo que se ejectua cuando se esta en modo computadora vs computadora
         if (turno == 47) {
             while (fin == false) {
                 if (ficha1 == 2) {
@@ -682,6 +711,8 @@ public class Grupo_6 extends Application {
         }
     }
 
+    //Metodo que revisa si la partida ha terminado, y si ya aha terminado revisa
+    //quien es el ganador
     public void checkWin(ArrayList<Integer> ar) { //REVISAR
         Tablero tabla = new Tablero(ar);
         int win = tabla.ganadorTabla();
@@ -697,6 +728,10 @@ public class Grupo_6 extends Application {
 
                 }
                 fin = true;
+                comodin.setVisible(false);
+                verTiradas.setVisible(false);
+                hbox1.setVisible(false);
+                hbox2.setVisible(false);
             } else if (win == 2) {
                 if (ficha1 == 2) {
                     mensaje = "GANARON LAS O";
@@ -704,9 +739,17 @@ public class Grupo_6 extends Application {
                     mensaje = "GANARON LAS X";
                 }
                 fin = true;
+                comodin.setVisible(false);
+                verTiradas.setVisible(false);
+                hbox1.setVisible(false);
+                hbox2.setVisible(false);
             } else if (win == 0) {
                 mensaje = "EMPATE";
                 fin = true;
+                comodin.setVisible(false);
+                verTiradas.setVisible(false);
+                hbox1.setVisible(false);
+                hbox2.setVisible(false);
             } else {
                 mensaje = "El juego sigue";
             }
@@ -729,6 +772,10 @@ public class Grupo_6 extends Application {
                     mensaje = "GANARON LAS O";
                 }
                 fin = true;
+                comodin.setVisible(false);
+                verTiradas.setVisible(false);
+                hbox1.setVisible(false);
+                hbox2.setVisible(false);
             } else if (win == 2) {
                 if (ficha2 == 2) {
                     mensaje = "GANARON LAS O";
@@ -736,9 +783,17 @@ public class Grupo_6 extends Application {
                     mensaje = "GANARON LAS X";
                 }
                 fin = true;
+                comodin.setVisible(false);
+                verTiradas.setVisible(false);
+                hbox1.setVisible(false);
+                hbox2.setVisible(false);
             } else if (win == 0) {
                 mensaje = "EMPATE";
                 fin = true;
+                comodin.setVisible(false);
+                verTiradas.setVisible(false);
+                hbox1.setVisible(false);
+                hbox2.setVisible(false);
             } else {
                 mensaje = "El juego sigue";
             }
@@ -762,6 +817,10 @@ public class Grupo_6 extends Application {
 
                 }
                 fin = true;
+                comodin.setVisible(false);
+                verTiradas.setVisible(false);
+                hbox1.setVisible(false);
+                hbox2.setVisible(false);
             } else if (win == 2) {
                 if (ficha1 == 2) {
                     mensaje = "GANASTE";
@@ -769,9 +828,17 @@ public class Grupo_6 extends Application {
                     mensaje = "PERDISTE";
                 }
                 fin = true;
+                comodin.setVisible(false);
+                verTiradas.setVisible(false);
+                hbox1.setVisible(false);
+                hbox2.setVisible(false);
             } else if (win == 0) {
                 mensaje = "EMPATE";
                 fin = true;
+                comodin.setVisible(false);
+                verTiradas.setVisible(false);
+                hbox1.setVisible(false);
+                hbox2.setVisible(false);
             } else {
                 mensaje = "El juego sigue";
             }
@@ -788,6 +855,7 @@ public class Grupo_6 extends Application {
         }
     }
 
+    //Las acciones que la maquina realizara durante su turno
     public void turnoMaquina() {
         if (treeTablero.getRoot().contarCeros() == 1) {
             ArrayList ar = new ArrayList();
@@ -823,6 +891,8 @@ public class Grupo_6 extends Application {
 
     }
 
+    //Metodo que sirve para actualizar los botones que componen el 3 en raya, 
+    //para que simpre se aprecie en la interfaz como se ve el tablero.
     public void actualizacionForzada(Button bo1, Button bo2, Button bo3, Button bo4, Button bo5, Button bo6, Button bo7, Button bo8, Button bo9, ArrayList compara1) {
         if (turno == 47) {
             if (compara1.get(0) != treeTablero.getRoot().getContent().get(0)) {
@@ -955,6 +1025,8 @@ public class Grupo_6 extends Application {
         checkWin(treeTablero.getRoot().getContent());
     }
 
+    //Metodo que muestra en la interfaz los posibles movimientos que podria 
+    //hacer la computadora, junto con el numero de utilidad de cada escenario.
     public void posiblesJugadas(Tree tre1) {
         hbox1.getChildren().clear();
         hbox2.getChildren().clear();
@@ -968,7 +1040,9 @@ public class Grupo_6 extends Application {
             a.addAll(c);
         }
         lista.setText(utilidades.toString());
-        b.addAll(lista);
+        Label c2=new Label();
+        c2.setText("La lista de utilidades es la siguiente: ");
+        b.addAll(c2, lista);
     }
 
     public void rellenarVBox() {
@@ -978,24 +1052,20 @@ public class Grupo_6 extends Application {
         c1.setStyle("-fx-background-color: aqua;");
         hbox.getChildren().add(c1);
         Tree tre1 = new Tree();
-        System.out.println("pvp "+pvpON);
-        if (contadorTurno == true && pvpON==false && cpuvcpuON==false) {
+        if (contadorTurno == true && pvpON == false && cpuvcpuON == false) {
             tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha1);
             contadorTurno = false;
-        } else if(contadorTurno == false && pvpON==false && cpuvcpuON==false) {
+        } else if (contadorTurno == false && pvpON == false && cpuvcpuON == false) {
             tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2);
             contadorTurno = true;
-        }else if(contadorTurno == true && pvpON==true && cpuvcpuON==false){
-            tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha1);
+        } else if (pvpON == true && cpuvcpuON == false) {
+            tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2);
+
+        } else if (contadorTurno == true && cpuvcpuON == true) {
+            tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), 1);
             contadorTurno = false;
-        }else if(contadorTurno == false && pvpON==true && cpuvcpuON==false){
-            tre1= generarTreeGeneral(treeTablero.getRoot().getContent(), ficha2);
-            contadorTurno = true;
-        }else if(contadorTurno == true && cpuvcpuON==true){
-            tre1= generarTreeGeneral(treeTablero.getRoot().getContent(), 1);
-            contadorTurno = false;
-        }else{
-            tre1= generarTreeGeneral(treeTablero.getRoot().getContent(), 2);
+        } else {
+            tre1 = generarTreeGeneral(treeTablero.getRoot().getContent(), 2);
             contadorTurno = true;
         }
 
@@ -1007,7 +1077,85 @@ public class Grupo_6 extends Application {
         supraBox.getChildren().add(hbox);
     }
 
-    public void ventanatablero(ArrayList<Integer> a) {
+    //FUNCIONALIDAD EXTRA: Metodo que permita, al tocar el boton verTiradas, 
+    //visualizar las posibles jugadas que puede hacer el jugador, junto a su
+    //numero de utilidad.
+    public void verTiradasON() {
+        verTiradas.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                hbox1.getChildren().clear();
+                hbox2.getChildren().clear();
+                ObservableList a = hbox1.getChildren();
+                ObservableList b = hbox2.getChildren();
+                hbox1.setSpacing(30);
+                Label lista = new Label();
+                ArrayList<TreeNode> ar = generarTreeGeneral(treeTablero.getRoot().getContent(), ficha1).getRoot().getHijos();
+                for (int i = 0; i < ar.size(); i++) {
+                    Label c = tablerolabel(ar.get(i).getContent());
+                    a.addAll(c);
+                }
+                ArrayList utilidadesTemp = listaUtilidadesMinimas(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha1), ficha1);
+                lista.setText(utilidadesTemp.toString());
+                Label c2=new Label();
+                c2.setText("La lista de utilidades es la siguiente: ");
+                b.addAll(c2, lista);
+            }
+        });
+    }
+
+    //Metodo que permite que cuandos e presione el boton comodin se vea en la 
+    //interfaz el mejor tablero segun su utilidad
+    public void comodinON() {
+        comodin.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treeTablero.getRoot().contarCeros() != 1) {
+                    hbox1.getChildren().clear();
+                    hbox2.getChildren().clear();
+                    ObservableList a = hbox1.getChildren();
+                    ObservableList b = hbox2.getChildren();
+                    hbox1.setSpacing(30);
+                    Label lista = new Label();
+                    TreeNode tn1 = calificarUtilidadMaxima(generarTreeGeneral(treeTablero.getRoot().getContent(), ficha1), ficha1);
+                    Label c = tablerolabel(tn1.getContent());
+                    Label c2 = new Label();
+                    c2.setText("El tablero con mayor utilidad es este: ");
+                    a.addAll(c2, c);
+                    lista.setText("Buena suerte!");
+                    b.addAll(lista);
+                } else {
+                    hbox1.getChildren().clear();
+                    hbox2.getChildren().clear();
+                    ObservableList a = hbox1.getChildren();
+                    ObservableList b = hbox2.getChildren();
+                    hbox1.setSpacing(30);
+                    Label lista = new Label();
+                    ArrayList ar = new ArrayList();
+                    for (int i = 0; i < treeTablero.getContent().size(); i++) {
+                        if (treeTablero.getContent().get(i) == 0) {
+                            if (ficha1 == 1) {
+                                ar.add(1);
+                            } else {
+                                ar.add(2);
+                            }
+                        } else {
+                            ar.add(treeTablero.getContent().get(i));
+                        }
+                    }
+                    Label c = tablerolabel(ar);
+                    Label c2 = new Label();
+                    c2.setText("El tablero con mayor utilidad es este: ");
+                    a.addAll(c2, c);
+                    lista.setText("Buena suerte!");
+                    b.addAll(lista);
+                }
+
+            }
+        });
+    }
+
+    public void ventanatablero() {
         tablerocomp.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -1019,7 +1167,7 @@ public class Grupo_6 extends Application {
                 //penal.addAll(c);
                 Stage sta = new Stage();
                 panela.setStyle("-fx-background-color: BEIGE;");
-                Scene escena = new Scene(panela,900, 700);
+                Scene escena = new Scene(panela, 900, 700);
                 sta.setScene(escena);
                 sta.show();
                 tablerocomp.setVisible(false);
@@ -1027,6 +1175,7 @@ public class Grupo_6 extends Application {
         });
     }
 
+    //Metodo que genera una label que representa el tablero de tres en raya
     public Label tablerolabel(ArrayList<Integer> a) {
         String cadena1 = "";
         String cadena2 = "";
