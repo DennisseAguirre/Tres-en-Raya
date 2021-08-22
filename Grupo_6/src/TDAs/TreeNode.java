@@ -55,6 +55,7 @@ public class TreeNode {
     }
 
     //Metodos para el juego
+    // Metodo que sirve para gener hijos del arbol tres en raya dependiendo de si es X o O
     public void generarHijos(int ficha1) {
         for (int i = 0; i <= this.getContent().size() - 1; i++) {
             if (this.getContent().get(i) == 0) {

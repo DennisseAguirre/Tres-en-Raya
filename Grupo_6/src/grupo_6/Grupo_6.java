@@ -33,7 +33,7 @@ import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 
 public class Grupo_6 extends Application {
-
+    // Algunos elementos importantes para los paneles
     Button b1 = new Button("JUGAR");
     Button b2 = new Button("EMPEZAR");
     Button b3 = new Button("OK");
@@ -148,7 +148,7 @@ public class Grupo_6 extends Application {
         });
 
     }
-
+    // Metodo que abre una ventana , en donde el usuario debe elegir el modo de en que desea jugador:
     public void ventanaModo(Stage s, Button b) {
         salir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -220,7 +220,8 @@ public class Grupo_6 extends Application {
             }
         });
     }
-
+    
+    // Metodo que abre otra ventana, en donde el usuario señala si es el 1 o 2 jugador y también si es O o X
     public void ventanaUsuario(Stage s, Button b) {
         salir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -260,7 +261,7 @@ public class Grupo_6 extends Application {
             }
         });
     }
-
+    // Metodo que abre otra ventana de usuario parecida a la anterior, pero solo si eligio la opcion jugador vs jugador
     public void ventanaUsuario2(Stage s, Button b) {
         salir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -293,25 +294,27 @@ public class Grupo_6 extends Application {
         });
     }
 
+    // Método que llenar el combo 1 con las dos opciones de letras que acepta el juego
     public void llenarCombo1() {
         combo1.getItems().add(("X"));
         combo1.getItems().add(("O"));
 
     }
 
+    // Método que llena el combo 2 para que el usuario decida que jugador es.
     public void llenarCombo2() {
         combo2.getItems().add(("jugador 1"));
         combo2.getItems().add(("jugador 2"));
 
     }
-
+    // Método que llena el combo 3 , con los modos de juegos que existen en el programa
     public void llenarCombo3() {
         combo3.getItems().add(("Jugador vs Computadora"));
         combo3.getItems().add(("Jugador vs Jugador"));
         combo3.getItems().add(("Computadora vs Computadora"));
 
     }
-
+    // Método que abre la ventana en donde se desarrolla el juego Tres en Raya
     public void panelJuego() {
         rellenarVBox();
         reiniciar.setOnAction(new EventHandler<ActionEvent>() {
@@ -1154,20 +1157,20 @@ public class Grupo_6 extends Application {
             }
         });
     }
-
+    // Método que abre una ventana al aplastar el boton "Mostrar Tableros",en donde se puede ver los tableros que generó la máquina.
     public void ventanatablero() {
         tablerocomp.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                VBox panela = supraBox;
-                panela.setSpacing(10);
-                ObservableList penal = panela.getChildren();
+                VBox layout = supraBox;
+                layout.setSpacing(10);
+                ObservableList panelt = layout.getChildren();
                 //Label c = tablerolabel(a);
                 //c.setStyle("-fx-background-color: aqua;");
                 //penal.addAll(c);
                 Stage sta = new Stage();
-                panela.setStyle("-fx-background-color: BEIGE;");
-                Scene escena = new Scene(panela, 900, 700);
+                layout.setStyle("-fx-background-color: BEIGE;");
+                Scene escena = new Scene(layout, 900, 700);
                 sta.setScene(escena);
                 sta.show();
                 tablerocomp.setVisible(false);
