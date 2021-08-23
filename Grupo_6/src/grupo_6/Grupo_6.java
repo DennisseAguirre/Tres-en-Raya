@@ -49,7 +49,7 @@ public class Grupo_6 extends Application {
     Label l5 = new Label("Seleccione si va a ser el 1 o 2 jugador: ");
     Label l6 = new Label("Seleccione modo: ");
     Label aviso2 = new Label("Usuario seleccione los datos que se le pida, por favor: ");
-    Label aviso = new Label("Usuario tiene que seleccionar una opciÃ³n, por favor: ");
+    Label aviso = new Label("Usuario tiene que seleccionar una opcion, por favor: ");
     VBox panel1 = new VBox();
     VBox panel2 = new VBox();
     VBox panel3 = new VBox();
