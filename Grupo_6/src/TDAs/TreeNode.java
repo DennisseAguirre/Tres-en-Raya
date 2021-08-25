@@ -2,45 +2,42 @@ package TDAs;
 
 import java.util.ArrayList;
 import java.util.List;
+//Implementacion del TDA Tree Node, con los metodos que van a ser usados
 
 public class TreeNode {
 
+    //El contenido de los nodes es siempre un ArrayList pues es mas conveniente
+    //para el programa, en ningun momento se encesita contenido de otro tipo
+    //de dato
     ArrayList<Integer> content;
-    //TreeNode padre;
     ArrayList<TreeNode> hijos;
 
+    //Constructor del TreeNode
     public TreeNode() {
         content = null;
         hijos = new ArrayList<TreeNode>();
-        //padre = null;
     }
 
     public TreeNode(ArrayList<Integer> cont) {
         content = cont;
         hijos = new ArrayList<TreeNode>();
-        //padre = null;
     }
 
     public TreeNode(ArrayList<Integer> content, ArrayList<TreeNode> hijos) {
         this.content = content;
         this.hijos = hijos;
     }
-//
-//    public TreeNode getPadre() {
-//        return padre;
-//    }
 
+    //Getters y Setters
     public ArrayList<TreeNode> getHijos() {
         return hijos;
     }
 
-//    public void setPadre(TreeNode padre) {
-//        this.padre = padre;
-//    }
     public void setHijos(ArrayList<TreeNode> hijos) {
         this.hijos = hijos;
     }
 
+    //Anadir un nodo a la lista de hijos del nodo
     public void addNodoHijo(TreeNode hijo) {
         this.hijos.add(hijo);
     }
@@ -67,6 +64,9 @@ public class TreeNode {
         }
     }
 
+    //Metodo que permite obtener la cantidad de ceros que hay en el contenido de
+    //un nodo. Creado con el objetivo de conocer la cantidad de espacios vacios 
+    //que hay en un tablero de 3 en raya.
     public int contarCeros() {
         int numeroDeCeros = 0;
         for (int inte : this.content) {

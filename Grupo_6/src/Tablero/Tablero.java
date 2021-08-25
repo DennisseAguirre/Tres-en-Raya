@@ -6,7 +6,8 @@
 package Tablero;
 
 import java.util.ArrayList;
-
+//Clase tablero creado para tener por separado procesos que solo afectan a los
+//Arraylist que componen a los tableros de 3 en raya.
 public class Tablero {
 
     ArrayList<Integer> tabla = new ArrayList<>();
@@ -24,10 +25,12 @@ public class Tablero {
         tabla.add(0);
     }
 
+    //Constructor del tablero
     public Tablero(ArrayList<Integer> tabla2) {
         tabla = tabla2;
     }
 
+    //getters y setters
     public ArrayList<Integer> getTabla() {
         return tabla;
     }

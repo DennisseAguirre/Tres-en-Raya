@@ -8,7 +8,6 @@ package Tablero;
 import TDAs.Tree;
 import TDAs.TreeNode;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class IA {
 
@@ -48,6 +47,7 @@ public class IA {
         }
         return (tre1.getHijosLista().get(index));
     }
+
     // Metodo que devuelve un ArrayList con la lista de utilidades minimas
     public static ArrayList listaUtilidadesMinimas(Tree tre1, int ficha1) {
         ArrayList listaUti = new ArrayList();
@@ -69,6 +69,7 @@ public class IA {
         }
         return listaUti;
     }
+
     // Metodo que calcula la utilidad de un tablero
     public static int calcularUtilidades(ArrayList lista1, int ficha1) {
         int ficha2 = 1;
@@ -87,7 +88,10 @@ public class IA {
         int utiTot = utiCasa - utiVisita;
         return utiTot;
     }
-    // Metodo que calcula el  número total de filas, columnas y diagonales disponibles en el tablero para el jugador correspondiente.
+
+    // Metodo que calcula el  número total de filas, columnas y diagonales 
+    //disponibles en el tablero para el jugador o la maquina correspondiente.
+    //Este metodo sigue la formula dada en el pdf para calcular la utilidad.
     public static int calcularUtilidadesPeroEstaVezSi(ArrayList<Integer> lista1, int ficha1) {
         int ficha2 = 1;
         if (ficha1 == 1) {
@@ -124,30 +128,4 @@ public class IA {
         }
         return uti;
     }
-    
-    //public static ArrayList intermediosDeArbol 
-/*
-    public static Tree generarSuperTree(Tree treeTablero, int ficha1, int turno) {
-        
-        if (turno == 1) {
-            int ficha2 = 1;
-            if (ficha1 == 1) {
-                ficha2 = 2;
-            } else {
-                ficha2 = 1;
-            }
-        }else{
-            
-        }
-
-        TreeNode nodo1 = new TreeNode(list1);
-        nodo1.generarHijos(ficha1);
-        for (int i = 0; i <= nodo1.getHijos().size() - 1; i++) {
-            System.out.println(i);
-            nodo1.getHijos().get(i).generarHijos(ficha2);
-        }
-        Tree tre1 = new Tree(nodo1);
-
-        return tre1;
-    }*/
 }
